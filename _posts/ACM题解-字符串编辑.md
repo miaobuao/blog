@@ -57,64 +57,91 @@ R a1 a2  其中a1为被替换的字符，a2为替换的字符，若在原串中�
 ```c++
 #include <bits/stdc++.h>
 using namespace std;
-int main(){
-    char str[55];
-    vector<char> res;
-    gets(str);
-    int len=strlen(str);
-    char op,oped;
-    cin>>op>>oped;
-    int sign=0;
-    if(op=='D'){
-        for(int i=0;i<len;i++){
-            if(str[i]==oped and sign==0){
-                sign=1;
-            }else{
-                res.push_back(str[i]);
-            }
-        }
-    }else{
-        char exts;
-        cin>> exts;
-        if(op=='I'){
-            for(int i=len-1;i>=0;i--){
-                if(str[i]==oped and sign==0){
-                    res.push_back(str[i]);
-                    res.push_back(exts);;
-                    sign=1;
-                }else{
-                    res.push_back(str[i]);
-                }
-            }
-        }else if(op=='R'){
-            for(int i=0;i<len;i++){
-                if(str[i]==oped){
-                    sign=1;
-                    res.push_back(exts);
-                }else{
-                    res.push_back(str[i]);
-                }
-            }
-        }
-    }
-
-    if(sign==0){
-        cout<<"Not exist";
-    }else{
-        vector<char>::iterator it =res.end();
-        if(op=='I'){
-            while(it!=res.begin()){
-                it--;
-                cout<<(*it);
-            }
-        }else{
-            it =res.begin();
-            while(it!=res.end()){
-                cout<<(*it);
-                it++;
-            }
-        }
-    }
+int main()
+{
+	char str[55];
+	vector<char> res;
+	// gets(str);
+	cin.get(str, 55);
+	int len = strlen(str);
+	char op, oped;
+	cin >> op >> oped;
+	int sign = 0;
+	if (op == 'D')
+	{
+		for (int i = 0; i < len; i++)
+		{
+			if (str[i] == oped and sign == 0)
+			{
+				sign = 1;
+			}
+			else
+			{
+				res.push_back(str[i]);
+			}
+		}
+	}
+	else
+	{
+		char exts;
+		cin >> exts;
+		if (op == 'I')
+		{
+			for (int i = len - 1; i >= 0; i--)
+			{
+				if (str[i] == oped and sign == 0)
+				{
+					res.push_back(str[i]);
+					res.push_back(exts);
+					;
+					sign = 1;
+				}
+				else
+				{
+					res.push_back(str[i]);
+				}
+			}
+		}
+		else if (op == 'R')
+		{
+			for (int i = 0; i < len; i++)
+			{
+				if (str[i] == oped)
+				{
+					sign = 1;
+					res.push_back(exts);
+				}
+				else
+				{
+					res.push_back(str[i]);
+				}
+			}
+		}
+	}
+	if (sign == 0)
+	{
+		cout << "Not exist";
+	}
+	else
+	{
+		vector<char>::iterator it = res.end();
+		if (op == 'I')
+		{
+			while (it != res.begin())
+			{
+				it--;
+				cout << (*it);
+			}
+		}
+		else
+		{
+			it = res.begin();
+			while (it != res.end())
+			{
+				cout << (*it);
+				it++;
+			}
+		}
+	}
 }
-
 ```
