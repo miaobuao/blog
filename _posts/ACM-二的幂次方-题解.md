@@ -2,6 +2,7 @@
 title: ACM-二的幂次方-题解
 date: 2021-02-25 19:58:46
 tags: [ACM, C++]
+categories: ACM
 toc: true
 ---
 ### 题目描述
