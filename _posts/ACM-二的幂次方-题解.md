@@ -44,6 +44,12 @@ toc: true
 ### 样例输出
     2(2(2)+2+2(0))+2(2+2(0))+2(0)
 
+### 思路
+一看就要递归，然后拿张纸自己算了算，大概知道了拆解过程，便计算边输出，不需要返回值，因此定义一个void d(int n)
+d函数得到一个整数n，先判断是否需要继续拆解。
+
+    pow(x,y)是C语言函数，返回x^y,类型为double
+
 
 ### 我的代码
 ```C++
@@ -52,37 +58,37 @@ toc: true
 using namespace std;
 
 void d(int n){
-	if(n==1){
-		cout<<"2(0)";
-	}else if(n==2){
-		cout<<"2";
-	}else{
-		int i,s=0;
-		for(i=1;n-pow(2,i)>0;i++);
-		int res=n-pow(2,i);
-		if(res<0){
-			i--;
-			res=n-pow(2,i);
-		}
-		if(i>1){
-			cout<<"2(";
-			d(i);
-			cout<<")";
-		}else{
-				cout<<"2";
-		}
-		if(res!=0){
-			cout<<"+";
-			d(res);
-		}
-	}
-	return;
+    if(n==1){
+        cout<<"2(0)";
+    }else if(n==2){
+        cout<<"2";
+    }else{
+        int i,s=0;
+        for(i=1;n-pow(2,i)>0;i++);
+        int res=n-pow(2,i);
+        if(res<0){
+            i--;
+            res=n-pow(2,i);
+        }
+        if(i>1){
+            cout<<"2(";
+            d(i);
+            cout<<")";
+        }else{
+                cout<<"2";
+        }
+        if(res!=0){
+            cout<<"+";
+            d(res);
+        }
+    }
+    return;
 }
 
 int main(){
-	int n;
-	cin>>n;
-	d(n);
-	return 0;
+    int n;
+    cin>>n;
+    d(n);
+    return 0;
 }
 ```
