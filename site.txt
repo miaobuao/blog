@@ -1,0 +1,6 @@
+https://miaobuao.github.io/2021/02/27/01背包问题/
+https://miaobuao.github.io/2021/02/26/快速幂以及求幂运算结果的位数/
+https://miaobuao.github.io/2021/02/26/二分查找与快速排序/
+https://miaobuao.github.io/2021/02/25/C-奇偶数判断的两种方法/
+https://miaobuao.github.io/2021/02/25/ACM-二的幂次方-题解/
+https://miaobuao.github.io/2021/02/24/ACM题解-字符串编辑/
