@@ -1,14 +1,12 @@
 ---
 title: Hexo用法
 date: 2021-02-25 00:59:36
-tags: hexo
+tags: Hexo
 toc: true
-banner: https://miaobuao.github.io/pic/Hexo用法/banner.png
-thumbnail:
+categories: Hexo
 ---
 文章的各种属性、摘要的书写方式
 <!--more-->
-
 ### 文章属性列表
 
 |layout|layout| post 或 page|
