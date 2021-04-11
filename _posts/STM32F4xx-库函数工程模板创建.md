@@ -1,7 +1,8 @@
 ---
 title: STM32F4xx-库函数工程模板创建
 date: 2021-03-30 08:23:13
-tags:
+tags: [单片机]
+categories: 单片机
 ---
 
 记录遇到的小问题。
