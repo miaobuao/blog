@@ -1,8 +1,8 @@
 ---
-title: ACM题解-字符串编辑
+title: 字符串编辑
 date: 2021-02-24 23:04:25
-categories: ACM
-tags: [ACM,C++]
+categories: 算法
+tags: [算法,C++]
 toc: true
 # thumbnail: http://www.dimtub.com/user/1.png
 ---

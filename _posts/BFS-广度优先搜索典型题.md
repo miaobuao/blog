@@ -1,9 +1,9 @@
 ---
 title: BFS-广度优先搜索典型题
 date: 2021-03-06 22:11:54
-tags: [ACM,C++]
+tags: [算法,C++]
 toc: ture
-catogories: ACM
+catogories: 算法
 ---
 
 BFS基础题-红与黑，是走迷宫和自动寻路算法
