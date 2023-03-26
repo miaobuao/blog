@@ -58,7 +58,7 @@ export default defineConfig({
     footer: {
       // message: '@miaobuao',9
       copyright:
-        'MIT Licensed | <a target="_blank" href="https://github.com/miaobuao"> @miaobuao </a>'
+        '欢迎关注 | <a target="_blank" href="https://github.com/miaobuao"> @miaobuao </a>'
     },
     logo: 'https://avatars.githubusercontent.com/miaobuao',
     // editLink: {

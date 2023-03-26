@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@element-plus/icons-vue': ^2.1.0
-  '@sugarat/theme': ^0.1.9
+  '@sugarat/theme': ^0.1.16
   element-plus: ^2.3.0
   markdown-it-mathjax3: ^4.3.2
   sass: ^1.59.2
@@ -12,7 +12,7 @@ specifiers:
 
 dependencies:
   '@element-plus/icons-vue': registry.npmmirror.com/@element-plus/icons-vue/2.1.0_vue@3.2.47
-  '@sugarat/theme': registry.npmmirror.com/@sugarat/theme/0.1.14_vue@3.2.47
+  '@sugarat/theme': registry.npmmirror.com/@sugarat/theme/0.1.16_vue@3.2.47
   element-plus: registry.npmmirror.com/element-plus/2.3.1_vue@3.2.47
   markdown-it-mathjax3: registry.npmmirror.com/markdown-it-mathjax3/4.3.2
   vue: registry.npmmirror.com/vue/3.2.47
@@ -545,11 +545,11 @@ packages:
       fastq: registry.npmmirror.com/fastq/1.15.0
     dev: false
 
-  registry.npmmirror.com/@sugarat/theme/0.1.14_vue@3.2.47:
-    resolution: {integrity: sha512-lB3t36s2rW9ncA/fyVJlxx6eebtpOJVG0G3os5OXaYbyrRg8SUc1NCcJEPx65z+5OnpOHygoaxmB2y75mfg/zA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@sugarat/theme/-/theme-0.1.14.tgz}
-    id: registry.npmmirror.com/@sugarat/theme/0.1.14
+  registry.npmmirror.com/@sugarat/theme/0.1.16_vue@3.2.47:
+    resolution: {integrity: sha512-3RkxxsgKJTJZlMzT/TXjCXT/KKO+JW171KX1OL7hCA140RKrrAYWCOLa22MIkqw7OLPAyZFuU72s9fccB0BJcA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@sugarat/theme/-/theme-0.1.16.tgz}
+    id: registry.npmmirror.com/@sugarat/theme/0.1.16
     name: '@sugarat/theme'
-    version: 0.1.14
+    version: 0.1.16
     dependencies:
       '@vue/shared': registry.npmmirror.com/@vue/shared/3.2.47
       '@vueuse/core': registry.npmmirror.com/@vueuse/core/9.13.0_vue@3.2.47
