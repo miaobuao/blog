@@ -60,7 +60,7 @@ Hence, 3 is the answer.
 
 ## code
 
-```c++
+```cpp
 #include <bits/stdc++.h>
 using namespace std;
 

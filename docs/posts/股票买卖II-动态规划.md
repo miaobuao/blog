@@ -80,7 +80,7 @@ isTop: false
 
 ### 代码
 
-```C++
+```cpp
 #include <iostream>
 using namespace std;
 
@@ -137,7 +137,7 @@ int main()
 
 ### 代码
 
-```c++
+```cpp
 #include <iostream>
 using namespace std;
 const int N = 1e5 + 10, INF = 0x3f3f3f3f;

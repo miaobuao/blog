@@ -20,11 +20,27 @@ const blogTheme = getThemeConfig({
       url: 'https://idim.cc'
     },
   ],
+  comment: {
+    repo: "miaobuao/miaobuao.github.io",
+    repoId: "R_kgDOJONNeg",
+    category: "Ideas",
+    categoryId: "DIC_kwDOJONNes4CVJhx",
+    mapping: "title",
+    // lang: 'zh-CN',
+    loading: 'lazy',
+    inputPosition: 'top',
+  },
   // 开启离线的全文搜索支持（如构建报错可注释下面的配置再次尝试）
   search: 'pagefind',
 })
 
 export default defineConfig({
+  markdown: {
+    lineNumbers: true,
+    config: (md)=>{
+      md.use(require("markdown-it-mathjax3"))
+    }
+  }, 
   ignoreDeadLinks: true,
   extends: blogTheme,
   lang: 'zh-cmn-Hans',
@@ -36,6 +52,7 @@ export default defineConfig({
       exclude: ['@sugarat/theme']
     }
   },
+  lastUpdated: true,
   themeConfig: {
     lastUpdatedText: '上次更新于',
     footer: {

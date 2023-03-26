@@ -57,7 +57,7 @@ BFS基础题-红与黑，是走迷宫和自动寻路算法
 
 ## Code
 
-```C++
+```cpp
 #include <bits/stdc++.h>
 
 using namespace std;

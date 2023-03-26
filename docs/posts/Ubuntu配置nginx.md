@@ -21,7 +21,7 @@ systemctl status nginx
 
 若成功开启则有如下输出：
 
-```text
+```txt
 ● nginx.service - A high performance web server and a reverse proxy server
      Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)
      Active: active (running) since Mon 2022-08-15 17:52:46 CST; 1min 39s ago

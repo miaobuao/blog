@@ -28,7 +28,7 @@ features,labels = synthetic_data(true_w, true_b, 1000)
 print("features: ", features.size())
 print("labels: ", labels.size())
 ```
-```text
+```txt
 features:  torch.Size([1000, 2])
 labels:  torch.Size([1000, 1])
 ```
@@ -103,7 +103,7 @@ for i in range(EPOCHES):
         print("epoch %d, loss %f" % (i+1, float(train_l.mean()))) 
 ```
 运行结果：
-```text
+```txt
 epoch 1, loss 2.347667
 epoch 2, loss 0.326492
 epoch 3, loss 0.045885

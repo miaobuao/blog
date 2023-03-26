@@ -20,7 +20,7 @@ mod和&操作符
     例如 19 & 1 的结果就是把19转化为二进制然后取最末位；
     顺带一提，>>运算符是去掉二进制最后一位。
 
-```c++
+```cpp
 #include <bits/stdc++.h>
 using namespace std;
 int main()
