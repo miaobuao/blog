@@ -4,6 +4,8 @@ specifiers:
   '@element-plus/icons-vue': ^2.1.0
   '@sugarat/theme': ^0.1.16
   element-plus: ^2.3.0
+  markdown-it-footnote: ^3.0.3
+  markdown-it-implicit-figures: ^0.11.0
   markdown-it-mathjax3: ^4.3.2
   sass: ^1.59.2
   typescript: ^4.9.5
@@ -14,6 +16,8 @@ dependencies:
   '@element-plus/icons-vue': registry.npmmirror.com/@element-plus/icons-vue/2.1.0_vue@3.2.47
   '@sugarat/theme': registry.npmmirror.com/@sugarat/theme/0.1.16_vue@3.2.47
   element-plus: registry.npmmirror.com/element-plus/2.3.1_vue@3.2.47
+  markdown-it-footnote: registry.npmmirror.com/markdown-it-footnote/3.0.3
+  markdown-it-implicit-figures: registry.npmmirror.com/markdown-it-implicit-figures/0.11.0
   markdown-it-mathjax3: registry.npmmirror.com/markdown-it-mathjax3/4.3.2
   vue: registry.npmmirror.com/vue/3.2.47
 
@@ -1288,6 +1292,19 @@ packages:
     version: 0.25.9
     dependencies:
       sourcemap-codec: registry.npmmirror.com/sourcemap-codec/1.4.8
+
+  registry.npmmirror.com/markdown-it-footnote/3.0.3:
+    resolution: {integrity: sha512-YZMSuCGVZAjzKMn+xqIco9d1cLGxbELHZ9do/TSYVzraooV8ypsppKNmUJ0fVH5ljkCInQAtFpm8Rb3eXSrt5w==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/markdown-it-footnote/-/markdown-it-footnote-3.0.3.tgz}
+    name: markdown-it-footnote
+    version: 3.0.3
+    dev: false
+
+  registry.npmmirror.com/markdown-it-implicit-figures/0.11.0:
+    resolution: {integrity: sha512-ed32u3O8pTEM3TKgeBTMKw8ce86L8u5L41CuLvGee3yevYOq+1BoxjI84m/f7RcUaATcKgXTgZwieadvOH4afg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/markdown-it-implicit-figures/-/markdown-it-implicit-figures-0.11.0.tgz}
+    name: markdown-it-implicit-figures
+    version: 0.11.0
+    engines: {node: '>=0.10.0'}
+    dev: false
 
   registry.npmmirror.com/markdown-it-mathjax3/4.3.2:
     resolution: {integrity: sha512-TX3GW5NjmupgFtMJGRauioMbbkGsOXAAt1DZ/rzzYmTHqzkO1rNAdiMD4NiruurToPApn2kYy76x02QN26qr2w==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/markdown-it-mathjax3/-/markdown-it-mathjax3-4.3.2.tgz}

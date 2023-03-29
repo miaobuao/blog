@@ -54,5 +54,5 @@ jobs:
         git config user.email "617802189@qq.com"
         git add .
         git commit -m "GitHub Actions Auto Builder at $(date +'%Y-%m-%d %H:%M:%S')"
-        git push --force --quiet "https://${{ secrets.ACCESS_TOKEN }}@$GITHUB_REPO" master:master
-        git push --force --quiet "https://miaobuao:${{ secrets.GITEE_ACCESS_TOKEN }}@$GITEE_REPO" master:master
+        git push --quiet --force "https://${{ secrets.ACCESS_TOKEN }}@$GITHUB_REPO" master:master
+      # git push --quiet "https://喵不嗷:${{ secrets.GITEE_ACCESS_TOKEN }}@$GITEE_REPO" master:master

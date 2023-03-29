@@ -38,7 +38,13 @@ export default defineConfig({
   markdown: {
     lineNumbers: true,
     config: (md)=>{
-      md.use(require("markdown-it-mathjax3"))
+      md
+      .use(require("markdown-it-mathjax3"))
+      .use(require("markdown-it-footnote"))
+      // .use(require("markdown-it-implicit-figures"), {
+      //   figcaption: true,
+      //   lazyLoading: true
+      // })
     }
   }, 
   ignoreDeadLinks: true,
