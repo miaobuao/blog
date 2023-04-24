@@ -1,5 +1,5 @@
 {
-    "markdown-image.base.fileNameFormat": "${YY}-${MM}-${DD}_${HH}_${mm}_${ss}_${mss}",
+    "markdown-image.base.fileNameFormat": "${hash}",
     "markdown-image.base.urlEncode": false,
     "markdown-image.local.path": "../images"
 }
