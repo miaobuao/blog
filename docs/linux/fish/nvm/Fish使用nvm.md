@@ -1,6 +1,6 @@
 ---
 title: 'Fish使用nvm'
-date: 15-05-2023, 10:57:24
+date: 2023-05-15 10:57:24
 tags: [linux, fish, nvm]
 ---
 

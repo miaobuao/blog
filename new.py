@@ -1,7 +1,7 @@
 import os
 import datetime
 
-now = datetime.datetime.now().strftime("%d-%m-%Y, %H:%M:%S")
+now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 title = input("Title: ")
 tags = []

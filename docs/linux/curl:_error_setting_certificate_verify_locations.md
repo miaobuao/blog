@@ -1,6 +1,6 @@
 ---
 title: "curl: error setting certificate verify locations"
-date: 15-05-2023, 11:05:48
+date: 2023-05-15 11:05:48
 tags: [linux]
 ---
 
