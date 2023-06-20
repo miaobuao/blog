@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import os
 import datetime
 
@@ -16,7 +17,8 @@ target = os.path.join(ROOT, *tags)
 if not os.path.exists(target):
     os.makedirs(target)
 
-with open(os.path.join(target, f"{title.replace('/', '-').replace(' ', '_')}.md"), 'w+', encoding='utf8') as f:
+fpath = os.path.join(target, f"{title.replace('/', '-').replace(' ', '_')}.md")
+with open(fpath, 'w+', encoding='utf8') as f:
     f.write(f"""---
 title: '{title}'
 date: {now}
@@ -25,3 +27,5 @@ tags: [{', '.join(tags)}]
 
 # {title}
 """)
+
+os.system(f"code {fpath}")
