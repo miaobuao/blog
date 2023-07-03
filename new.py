@@ -28,4 +28,4 @@ tags: [{', '.join(tags)}]
 # {title}
 """)
 
-os.system(f"code {fpath}")
+os.system(f"code '{fpath}'")
