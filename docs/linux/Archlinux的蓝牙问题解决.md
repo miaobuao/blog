@@ -16,7 +16,7 @@ systemctl enable --now bluetooth.service
 这时候应该可以连接设备, 但是连接耳机连接不上, 通过`systemctl status bluetooth.service`查看后发现是`a2dp`协议不能使用, 所以还要安装:
 
 ```bash
-yay -S pulseaudio-bluetooth
+yay -S pipewire-pulse
 ```
 可以编辑`/usr/lib/systemd/system/bluetooth.service`, 在`ExecStart`的最后加`-E`, 用于开启实验模式
 ![bluetooth](image.png)
