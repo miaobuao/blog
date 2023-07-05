@@ -1,7 +1,7 @@
 ---
 title: 'Fish使用nvm'
 date: 2023-05-15 10:57:24
-tags: [linux, fish, nvm]
+tags: [linux, fish]
 ---
 
 # Fish使用nvm(Node Version Manager)
