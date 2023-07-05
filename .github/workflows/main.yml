@@ -70,7 +70,7 @@ jobs:
       - name: Build Gitee Pages
         uses: yanglbme/gitee-pages-action@master
         with:
-          branch: main
+          branch: master
           gitee-repo: miaobuao/miaobuao
           gitee-username: miaobuao
           gitee-password: ${{ secrets.GITEE_PASSWORD }}
