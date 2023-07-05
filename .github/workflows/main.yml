@@ -55,4 +55,20 @@ jobs:
         git add .
         git commit -m "GitHub Actions Auto Builder at $(date +'%Y-%m-%d %H:%M:%S')"
         git push --quiet --force "https://${{ secrets.ACCESS_TOKEN }}@$GITHUB_REPO" master:master
-      # git push --quiet "https://喵不嗷:${{ secrets.GITEE_ACCESS_TOKEN }}@$GITEE_REPO" master:master
+  sync-gitee:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Sync to Gitee
+      uses: wearerequired/git-mirror-action@master
+      env:
+          SSH_PRIVATE_KEY: ${{ secrets.GITEE_ACCESS_TOKEN }}
+      with:
+          source-repo: "git@github.com:miaobuao/miaobuao.github.io.git"
+          destination-repo: "git@gitee.com:miaobiao/miaobuao.git"
+
+    - name: Build Gitee Pages
+      uses: yanglbme/gitee-pages-action@master
+      with:
+          gitee-username: 喵不嗷
+          gitee-password: ${{ secrets.GITEE_PASSWORD }}
+          gitee-repo: miaobuao/miaobuao
