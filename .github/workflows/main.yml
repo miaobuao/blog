@@ -46,7 +46,7 @@ jobs:
           # Github 仓库
           GITHUB_REPO: github.com/miaobuao/miaobuao.github.io
           # Gitee 仓库
-          GITEE_REPO: gitee.com/miaobuao/miaobuao.gitee.io.git
+          # GITEE_REPO: gitee.com/miaobuao/miaobuao.gitee.io.git
         # 将编译后的博客文件推送到指定仓库
         run: |
           cd ./docs/.vitepress/dist && git init && git add .
