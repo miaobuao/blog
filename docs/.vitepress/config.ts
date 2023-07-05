@@ -51,7 +51,7 @@ export default defineConfig({
   extends: blogTheme,
   lang: 'zh-cmn-Hans',
   title: 'Meo\'s Blog',
-  description: '喵不嗷的小博客',
+  description: '喵不嗷的博客, miaobuao blog',
   vite: {
     optimizeDeps: {
       include: ['element-plus'],

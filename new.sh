@@ -13,7 +13,7 @@ mkdir -p $tgt_path
 
 echo -e "---
 title: $title
-date: $(date)
+date: $(date '+%Y-%m-%d %H:%M:%S')
 tags: [$(string join ',' $tags)]
 ---
 
