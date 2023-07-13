@@ -6,9 +6,9 @@ while test -n $(string trim $(read -p "echo 'Tags: '" tag), $tag)
     set -a tags $tag
 end
 
-set script_path (dirname (status --current-filename))
-set tgt_path $script_path"/docs/"$(string join "/" $tags)
-
+set -l script_path (dirname (status --current-filename))
+set -l tgt_path $script_path"/docs/src/"$(string join "/" $tags)
+set -l doc_path $tgt_path"/"$title".md"
 mkdir -p $tgt_path
 
 echo -e "---
@@ -17,6 +17,7 @@ date: $(date '+%Y-%m-%d %H:%M:%S')
 tags: [$(string join ',' $tags)]
 ---
 
-# $title\n" > $tgt_path"/"$title".md"
+# $title\n" > $doc_path
 
 code $script_path
+code $doc_path
