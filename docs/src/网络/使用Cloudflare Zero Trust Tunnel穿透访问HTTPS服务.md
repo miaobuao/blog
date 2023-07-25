@@ -59,7 +59,7 @@ ingress:
 6. 运行配置
 
 ```sh
-cloudflared tunnel <TUNNEL NAME>
+cloudflared tunnel run <TUNNEL NAME>
 ```
 
 这时候直接访问`https://xxxx.example.com`即可.
