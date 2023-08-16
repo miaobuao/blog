@@ -28,19 +28,20 @@ sudo dpkg -i cloudflared.deb
 cloudflared tunnel login
 ```
 
-4. 创建解析记录
-
-```
-cloudflared tunnel route dns <UUID or NAME> <xxxx.exmaple.com>
-```
-
-6. 创建隧道
+4. 创建隧道
 
 ```
 cloudflare tunnel create <TUNNEL NAME>
 ```
 
-7. 编辑 tunnel 的配置文件
+5. 创建解析记录
+
+```
+cloudflared tunnel route dns <TUNNEL NAME> <xxxx.exmaple.com>
+```
+
+
+6. 编辑 tunnel 的配置文件
 
 ```yml
 tunnel: <TUNNEL ID>
@@ -56,7 +57,7 @@ ingress:
 
 因为 cf 的代理会自动开启 https, 所以并不需要在本地使用 ssl/tls(https).
 
-6. 运行配置
+7. 运行配置
 
 ```sh
 cloudflared tunnel run <TUNNEL NAME>
