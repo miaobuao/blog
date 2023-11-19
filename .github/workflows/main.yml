@@ -56,9 +56,6 @@ jobs:
           git commit -m "GitHub Actions Auto Builder at $(date +'%Y-%m-%d %H:%M:%S')"
           git push --quiet --force "https://${{ secrets.ACCESS_TOKEN }}@$GITHUB_REPO" master:master
 
-  sync-gitee:
-    runs-on: ubuntu-latest
-    steps:
       - name: Sync to Gitee
         uses: wearerequired/git-mirror-action@master
         env:
