@@ -14,7 +14,7 @@ const blogTheme = getThemeConfig({
     {
       nickname: "喵不嗷",
       des: "TO BE A GEEK :)",
-      avatar: "/avatar.png",
+      avatar: "https://avatars.githubusercontent.com/miaobuao",
       url: "/about",
     },
     // {
