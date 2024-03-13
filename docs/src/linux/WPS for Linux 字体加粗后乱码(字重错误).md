@@ -1,0 +1,16 @@
+---
+title: WPS for Linux 字体加粗后乱码(字重错误)
+date: 2024-03-13 17:22:11
+tags: [linux]
+---
+
+# WPS for Linux 字体加粗后乱码(字重错误)
+
+**成因**：WPS 依赖的 `freetype` 更新后不兼容
+
+## 解决方案^[https://bbs.wps.cn/topic/3137]
+
+1. 点击下载[libfreetype6_2.12.1](../assets/libfreetype-2.12.1.zip)
+2. 解压后把里面的两个文件复制到WPS目录下的office6里（我的发行版位于`/opt/kingsoft/wps-office/office6`）
+
+也可以下载[deb包](https://mirrors.ustc.edu.cn/debian/pool/main/f/freetype/libfreetype6_2.12.1%2Bdfsg-5_amd64.deb)然后把`data/usr/lib/x86_64-linux-gnu`下的所有文件复制到 `office6` 中
