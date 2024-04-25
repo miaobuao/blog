@@ -30,7 +30,9 @@ chmod +x Meta-Llama-3-8B-Instruct.Q5_K_M.llamafile
 在 tmux 中运行该应用
 
 ```sh
-./Meta-Llama-3-8B-Instruct.Q5_K_M.llamafile --gpu nvidia -ngl 999 --port 8080
+./Meta-Llama-3-8B-Instruct.Q5_K_M.llamafile \
+    --gpu nvidia -ngl 999 -c 4096 \
+    --port 8080
 ```
 
 ## 启动 WebUI 容器
