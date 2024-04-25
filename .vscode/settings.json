@@ -1,5 +1,6 @@
 {
     "markdown-image.base.fileNameFormat": "${hash}",
     "markdown-image.base.urlEncode": false,
-    "markdown-image.local.path": "../images"
+    "markdown-image.local.path": "../images",
+    "editor.formatOnSave": true
 }
