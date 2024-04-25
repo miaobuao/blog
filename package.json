@@ -1,5 +1,6 @@
 {
   "name": "meo-blog",
+  "author": "miaobuao",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -11,18 +12,16 @@
   "dependencies": {
     "@element-plus/icons-vue": "^2.1.0",
     "@sugarat/theme": "0.1.16",
-    "element-plus": "^2.3.0",
+    "element-plus": "^2.7.1",
     "markdown-it-footnote": "^3.0.3",
     "markdown-it-implicit-figures": "^0.11.0",
     "markdown-it-mathjax3": "^4.3.2",
     "vue": "^3.2.47"
   },
   "devDependencies": {
-    "sass": "^1.59.2",
+    "sass": "^1.60.0",
     "sitemap": "^7.1.1",
     "typescript": "^4.9.5",
     "vitepress": "1.0.0-alpha.56"
-  },
-  "author": "miaobuao",
-  "license": "MIT"
+  }
 }
