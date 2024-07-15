@@ -1,0 +1,48 @@
+---
+import { getCollection } from 'astro:content'
+import AuthorInfo from '@/components/AuthorInfo/AuthorInfo.astro'
+import { getAllPostsInfo } from '@/lib/post'
+import PostCard from '@/components/PostCard.astro'
+import ScrollArea from '@/components/ScrollArea.astro'
+import Footer from '@/components/Footer.astro'
+
+const posts = await getAllPostsInfo(getCollection('blog')).then(
+  posts => posts
+    .filter(p => !!p)
+    .filter(p => p.isDraft === false)
+    .sort((a, b) => {
+      const cmp1 = b!.ctime.valueOf() - a!.ctime.valueOf()
+      if (cmp1 !== 0)
+        return cmp1
+      return b!.mtime.valueOf() - a!.mtime.valueOf()
+    }),
+)
+---
+
+<div class="md:hidden">
+    <ScrollArea class="flex-1 h-full">
+        <div class="grid gap-y-4 p-2">
+        {
+            posts.map(p => <PostCard info={p}></PostCard>)
+        }
+        </div>
+        <Footer></Footer>
+    </ScrollArea>
+</div>
+
+
+<div class="hidden h-full w-full md:block">
+    <div class="h-full flex">
+        <ScrollArea class="w-[25%] max-w-[320px] h-full p-2 md:py-4 md:px-8">
+            <AuthorInfo />
+        </ScrollArea>
+        <ScrollArea class="flex-1 h-full">
+            <div class="grid gap-y-4 p-2">
+            {
+                posts.map(p => <PostCard info={p}></PostCard>)
+            }
+            </div>
+            <Footer></Footer>
+        </ScrollArea>
+    </div>
+</div>

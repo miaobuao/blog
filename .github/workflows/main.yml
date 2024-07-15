@@ -1,6 +1,5 @@
 name: Blog CI/CD
 
-# 触发条件：在 push 到分支后触发
 on:
   push:
     branches:
@@ -12,44 +11,37 @@ env:
 jobs:
   blog-cicd:
     name: build & deploy
-    runs-on: ubuntu-latest # 使用最新的 Ubuntu 系统作为编译部署的环境
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout codes
         uses: actions/checkout@v2
 
       - name: Setup node
-        # 设置 node.js 环境
         uses: actions/setup-node@v1
         with:
           node-version: "18.x"
 
       - name: Cache node modules
-        # 设置包缓存目录，避免每次下载
         uses: actions/cache@v1
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
 
       - name: Install dependencies
-        # 下载相关包
         run: |
-          npm install
+          npm i -g pnpm
+          pnpm i
 
       - name: Generate files
-        # 编译 markdown 文件
         run: |
-          npm run build
+          pnpm build
 
       - name: Deploy blog
         env:
-          # Github 仓库
           GITHUB_REPO: github.com/miaobuao/miaobuao.github.io
-          # Gitee 仓库
-          # GITEE_REPO: gitee.com/miaobuao/miaobuao.gitee.io.git
-        # 将编译后的博客文件推送到指定仓库
         run: |
-          cd ./docs/.vitepress/dist && git init && git add .
+          cd ./dist && git init && git add .
           git config user.name "miaobuao"
           git config user.email "617802189@qq.com"
           git add .

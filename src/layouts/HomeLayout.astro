@@ -1,0 +1,20 @@
+---
+import SpeedInsights from '@vercel/speed-insights/astro'
+import '@/styles/globals.css'
+
+import BaseHead from '../components/BaseHead.astro'
+import { SiteDescription, SiteTitle } from '../consts'
+import DarkModeAdaptor from '@/components/DarkModeAdaptor.astro'
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SiteTitle} description={SiteDescription} />
+    <DarkModeAdaptor />
+  </head>
+  <body>
+    <SpeedInsights />
+    <slot />
+  </body>
+</html>

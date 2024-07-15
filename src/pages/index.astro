@@ -1,0 +1,30 @@
+---
+import { getCollection } from 'astro:content'
+import Header from '../components/Header.astro'
+import HomeLayout from '@/layouts/HomeLayout.astro'
+import MainView from '@/layouts/views/MainView.astro'
+import { getAllPostsInfo } from '@/lib/post'
+
+const posts = await getAllPostsInfo(getCollection('blog')).then(
+  posts => posts
+    .filter(p => !!p)
+    .filter(p => p.isDraft === false)
+    .sort((a, b) => {
+      const cmp1 = b!.ctime.valueOf() - a!.ctime.valueOf()
+      if (cmp1 !== 0)
+        return cmp1
+      return b!.mtime.valueOf() - a!.mtime.valueOf()
+    }),
+)
+
+
+---
+
+<HomeLayout>
+  <div class="flex flex-col w-screen h-screen">
+    <Header />
+    <div class="flex-1 w-full overflow-y-auto">
+      <MainView />
+    </div>
+  </div>
+</HomeLayout>
