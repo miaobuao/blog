@@ -1,11 +1,8 @@
-import path from 'node:path'
-import process from 'node:process'
 import { defineConfig } from 'astro/config'
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import tailwind from '@astrojs/tailwind'
 import playformCompress from '@playform/compress'
-import partytown from '@astrojs/partytown'
 import remarkGithubAdmonitionsToDirectives from 'remark-github-admonitions-to-directives'
 import remarkDirective from 'remark-directive'
 import remarkMath from 'remark-math'
@@ -16,10 +13,11 @@ import rehypeKatex from 'rehype-katex'
 import rehypeSlug from 'rehype-slug'
 
 import preact from '@astrojs/preact'
+import config from './src/consts'
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://yangqiuyi.com',
+  site: config.site.url,
   vite: {
     assetsInclude: ['**/*.zip'],
   },
@@ -38,24 +36,12 @@ export default defineConfig({
     ],
   },
   integrations: [
-    {
-      name: 'Prepare Post Info',
-      hooks: {
-        'astro:config:setup': (options) => {
-          options.addMiddleware({
-            entrypoint: path.resolve(process.cwd(), './middlewares/post-info.ts'),
-            order: 'pre',
-          })
-        },
-      },
-    },
     mdx(),
     sitemap(),
     tailwind({
       applyBaseStyles: false,
     }),
     preact({ compat: true }),
-    partytown(),
     playformCompress({
       CSS: true,
       HTML: true,

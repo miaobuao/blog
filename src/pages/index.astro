@@ -1,9 +1,11 @@
 ---
 import { getCollection } from 'astro:content'
-import Header from '../components/Header.astro'
-import HomeLayout from '@/layouts/HomeLayout.astro'
-import MainView from '@/layouts/views/MainView.astro'
-import { getAllPostsInfo } from '@/lib/post'
+import Header from '@/theme/components/Header.astro'
+import HomeLayout from '@/theme/layouts/HomeLayout.astro'
+import MainView from '@/theme/layouts/views/MainView.astro'
+import { getAllPostsInfo } from '@/theme/lib/post'
+import Footer from '@/theme/components/Footer.astro'
+import PostCard from '@/theme/components/PostCard.astro'
 
 const posts = await getAllPostsInfo(getCollection('blog')).then(
   posts => posts
@@ -16,15 +18,13 @@ const posts = await getAllPostsInfo(getCollection('blog')).then(
       return b!.mtime.valueOf() - a!.mtime.valueOf()
     }),
 )
-
-
 ---
 
 <HomeLayout>
-  <div class="flex flex-col w-screen h-screen">
-    <Header />
-    <div class="flex-1 w-full overflow-y-auto">
-      <MainView />
-    </div>
+  <div class="grid gap-y-4 p-2">
+    {
+        posts.map(p => <PostCard info={p}></PostCard>)
+    }
   </div>
+  <Footer></Footer>
 </HomeLayout>

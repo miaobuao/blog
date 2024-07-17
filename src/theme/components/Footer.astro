@@ -1,7 +1,7 @@
 ---
 import type { ClassValue } from 'clsx'
-import { Author } from '../consts'
-import { cn } from '@/lib/utils'
+import config from '@/consts'
+import { cn } from '@/theme/lib/utils'
 
 export interface Props {
   class?: ClassValue
@@ -15,6 +15,6 @@ const { class: className } = Astro.props
   {' '}
   {today.getFullYear()}
   {' '}
-  {Author.name}
+  {config.author.name}
   . All rights reserved.
 </footer>

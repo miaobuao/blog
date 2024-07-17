@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'preact/hooks'
-import { cn } from '@/lib/utils'
+import { cn } from '@/theme/lib/utils'
 
 export function Avatar(props: {
   className?: string
