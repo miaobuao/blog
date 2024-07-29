@@ -1,4 +1,4 @@
-#!/usr/bin/fish
+#!/usr/bin/env fish
 
 read -l -p "echo 'Title: '" title
 set -l tags ()
@@ -13,7 +13,6 @@ mkdir -p $tgt_path
 
 echo -e "---
 title: $title
-pubDate: $(date '+%Y-%m-%d %H:%M:%S')
 date: $(date '+%Y-%m-%d %H:%M:%S')
 tags: [$(string join ',' $tags)]
 ---
