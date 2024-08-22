@@ -1,4 +1,4 @@
-#!/usr/bin/fish
+#!/usr/bin/env fish
 git add .
 
 read -l -p "echo 'commit: '" msg
