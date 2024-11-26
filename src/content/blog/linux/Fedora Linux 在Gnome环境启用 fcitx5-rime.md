@@ -1,7 +1,7 @@
 ---
 title: Fedora Linux 在Gnome环境启用 fcitx5-rime
 date: 2024-04-25 13:58:06
-tags: [linux, gnome, 输入法]
+tags: [linux]
 ---
 
 # Fedora Linux 在 Gnome 环境启用 fcitx5-rime
