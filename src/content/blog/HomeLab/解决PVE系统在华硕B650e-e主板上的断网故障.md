@@ -1,7 +1,7 @@
 ---
 title: 解决PVE系统在华硕B650e-e主板上的断网故障
 date: 2024-07-29 16:36:11
-tags: [PVE]
+tags: [HomeLab]
 ---
 
 # 解决 PVE 系统在华硕 B650e-e 主板上的断网故障

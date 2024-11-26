@@ -1,7 +1,7 @@
 ---
 title: PVE给Debain虚拟机开启xterm.js
 date: 2024-06-08 13:52:11
-tags: [PVE]
+tags: [HomeLab]
 ---
 
 # PVE给Debain虚拟机开启xterm.js
