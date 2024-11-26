@@ -12,7 +12,6 @@ import rehypeKatex from 'rehype-katex'
 // import rehypeMathjax from 'rehype-mathjax'
 import rehypeSlug from 'rehype-slug'
 
-import preact from '@astrojs/preact'
 import config from './src/consts'
 
 // https://astro.build/config
@@ -41,7 +40,6 @@ export default defineConfig({
     tailwind({
       applyBaseStyles: false,
     }),
-    preact({ compat: true }),
     playformCompress({
       CSS: true,
       HTML: true,
