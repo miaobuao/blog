@@ -1,9 +1,10 @@
 ---
 import type { GetStaticPaths } from 'astro'
 import { getCollection } from 'astro:content'
-import { pipe } from 'fp-ts/lib/function'
-import { type IPostInfo, aggreateByTag, getAllPostsInfo } from '@/theme/lib/post'
+import * as R from 'ramda'
+import { type IPostInfo, aggregateByTag, getAllPostsInfo } from '@/theme/lib/post'
 import HomeLayout from '@/theme/layouts/HomeLayout.astro'
+import PostCard from '@/theme/components/PostCard.astro'
 
 export interface Props {
     tag: string
@@ -11,12 +12,11 @@ export interface Props {
 }
 
 export const getStaticPaths = (async () => {
-    const posts = await pipe(
-        'blog',
+    const posts = await R.pipe(
         getCollection,
         getAllPostsInfo,
-    )
-    const tags = aggreateByTag(posts)
+    )('blog')
+    const tags = aggregateByTag(posts)
     return Array.from(tags.entries()).map(([tag, posts]) => ({
         params: { slug: tag },
         props: { tag, posts },
@@ -28,6 +28,15 @@ const { tag, posts } = Astro.props
 ---
 
 <HomeLayout>
-nothing here
+    <div class="p-2 grid gap-y-4">
+        <h1 class="text-3xl font-bold">
+            # {tag}
+        </h1>
+        <div class="grid gap-y-4">
+        {
+            posts.map(p => <PostCard info={p}></PostCard>)
+        }
+        </div>
+    </div>
 </HomeLayout>
 

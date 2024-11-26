@@ -1,5 +1,5 @@
 import path from 'node:path'
-import { type CollectionEntry, type ContentEntryMap } from 'astro:content'
+import type { CollectionEntry, ContentEntryMap } from 'astro:content'
 import getReadingTime from 'reading-time'
 import { toString } from 'mdast-util-to-string'
 import { fromMarkdown } from 'mdast-util-from-markdown'
@@ -88,7 +88,7 @@ export function getReadingTimeFromMarkdown(text: string) {
   return getReadingTime(textOnPage)
 }
 
-export function aggreateByTag(posts: IPostInfo[]) {
+export function aggregateByTag(posts: IPostInfo[]) {
   const res = new Map<string, IPostInfo[]>()
   posts.forEach((p) => {
     p.tags.forEach((t) => {

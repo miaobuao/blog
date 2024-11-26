@@ -1,13 +1,13 @@
 ---
 import { sortBy } from 'lodash-es'
-import { type IPostInfo, aggreateByTag, getTagLink } from '@/theme/lib/post'
+import { type IPostInfo, aggregateByTag, getTagLink } from '@/theme/lib/post'
 
 export interface Props {
     posts: IPostInfo[]
 }
 
 const { posts } = Astro.props
-const stats = aggreateByTag(posts)
+const stats = aggregateByTag(posts)
 const counts = sortBy(Array.from(stats.entries()).map(([k, v]) => [k, v.length] as const), d => d[1]).reverse()
 ---
 

@@ -10,4 +10,9 @@ export default antfu({
     'no-unused-vars': 'off',
     'unused-imports/no-unused-vars': 'warn',
   },
+}, {
+  files: ['./src/**/*.astro'],
+  rules: {
+    'style/max-statements-per-line': 'off',
+  },
 })

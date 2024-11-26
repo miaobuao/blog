@@ -1,11 +1,22 @@
 ---
+import * as d3 from 'd3'
 import { getCollection } from 'astro:content'
 import Avatar from '../ui/avatar.astro'
 import TagPercentage from './TagPercentage.astro'
 import config from '@/consts'
-import { getSafePostsInfo } from '@/theme/lib/post'
+import { aggregateByTag, getSafePostsInfo } from '@/theme/lib/post'
 
 const posts = await getSafePostsInfo(getCollection('blog'))
+
+const tagStats = aggregateByTag(posts)
+const tagColorScale = d3.scaleOrdinal(Object.keys(tagStats), d3.schemeTableau10)
+
+const tagsData = Array.from(tagStats.entries()).map(([tag, info]) => ({
+  name: tag,
+  color: tagColorScale(tag),
+  count: info.length,
+})).sort((a, b) => b.count - a.count)
+
 ---
 
 <div class="flex flex-col items-center gap-3 md:gap-4">
@@ -23,7 +34,15 @@ const posts = await getSafePostsInfo(getCollection('blog'))
     </span>
   </div>
 
-  <div class="w-full mt-1 md:mt-3">
+  <div class="w-full mt-1 md:mt-3 flex flex-wrap gap-2">
+    <!-- {
+      tagsData.map(data => (
+        <span class="p-1 text-sm rounded-lg text-white" style={{ backgroundColor: data.color }}>
+          {data.name} ({data.count})
+        </span>
+      ))
+    } -->
     <TagPercentage posts={posts} />
+     <!-- <TagTreemap posts={posts} /> -->
   </div>
 </div>

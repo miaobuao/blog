@@ -2,8 +2,8 @@ import { defineThemeConfig } from './theme/lib/config'
 
 const config = defineThemeConfig({
   site: {
-    title: `Meo's Blog`,
-    description: 'Welcome to my blog!',
+    title: `杨秋逸的博客`,
+    description: '这是杨秋逸的博客!',
     locale: 'zh-CN',
     url: 'https://yangqiuyi.com',
   },
@@ -13,7 +13,7 @@ const config = defineThemeConfig({
     signature: 'To Be A Geek :)',
     avatar: {
       url: 'https://avatars.githubusercontent.com/u/62047803?v=4',
-      alt: '杨',
+      alt: '秋逸',
     },
   },
 })
