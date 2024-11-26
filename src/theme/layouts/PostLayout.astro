@@ -1,7 +1,6 @@
 ---
 import '../styles/globals.css'
 import '../styles/post.scss'
-import SpeedInsights from '@vercel/speed-insights/astro'
 import type { CollectionEntry } from 'astro:content'
 import BaseHead from '../components/BaseHead.astro'
 import Header from '../components/Header.astro'
@@ -21,10 +20,9 @@ const { title, description, pubDate, updatedDate } = Astro.props
     <DarkModeAdaptor />
   </head>
   <body>
-    <SpeedInsights />
     <Header class="sticky top-0" />
     <main class="flex justify-center items-center">
-      <article class="prose dark:prose-invert p-4">
+      <article class="prose dark:prose-invert p-4" data-pagefind-body>
       {pubDate && <FormattedDate date={pubDate} />}
         {
           updatedDate && (

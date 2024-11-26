@@ -1,4 +1,5 @@
 import { defineConfig } from 'astro/config'
+import pagefind from 'astro-pagefind'
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import tailwind from '@astrojs/tailwind'
@@ -11,7 +12,7 @@ import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 // import rehypeMathjax from 'rehype-mathjax'
 import rehypeSlug from 'rehype-slug'
-
+import vue from '@astrojs/vue'
 import config from './src/consts'
 
 // https://astro.build/config
@@ -29,10 +30,10 @@ export default defineConfig({
     rehypePlugins: [
       rehypeSlug,
       [rehypeKatex, { output: 'mathml' }],
-      // rehypeMathjax,
-      // rehypeAutoLinkHeadings,
-      // rehypeComponents,
     ],
+    // rehypeMathjax,
+    // rehypeAutoLinkHeadings,
+    // rehypeComponents,
   },
   integrations: [
     mdx(),
@@ -46,5 +47,7 @@ export default defineConfig({
       JavaScript: true,
       SVG: true,
     }),
+    vue(),
+    pagefind(),
   ],
 })

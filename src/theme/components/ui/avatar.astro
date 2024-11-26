@@ -1,22 +1,22 @@
 ---
+import type { HTMLAttributes } from 'astro/types'
 import { cn } from '@/theme/lib/utils'
 
-interface Props {
-  className?: string
+interface Props extends HTMLAttributes<'div'> {
   url: string
   alt?: string
 }
 
-const { className, url, alt } = Astro.props;
+const { url, alt, ...otherProps } = Astro.props;
 ---
 
 <script>
 class AvatarComponent extends HTMLElement {
   showAlt = true
 
-  connectedCallback() {
+  constructor() {
+    super()
     const img = this.querySelector('img')
-
     if (img) {
       img.onerror = () => {
         this.showAlt = true
@@ -27,7 +27,9 @@ class AvatarComponent extends HTMLElement {
         this.updateVisibility()
       }
     }
-
+    if (img?.complete) {
+      this.showAlt = false
+    }
     this.updateVisibility()
   }
 
@@ -48,14 +50,14 @@ class AvatarComponent extends HTMLElement {
 customElements.define('avatar-component', AvatarComponent)
 </script>
 
-<avatar-component class="relative select-none">
+<avatar-component class="relative select-none block">
   <div class={cn('avatar placeholder', 'visible')}>
-    <div class={className}>
+    <div {...otherProps}>
       {alt}
     </div>
   </div>
   <div class={cn('avatar absolute top-0 left-0 invisible')}>
-    <div class={className}>
+    <div {...otherProps}>
       <img src={url} alt={alt} loading="lazy" />
     </div>
   </div>
