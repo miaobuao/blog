@@ -1,7 +1,7 @@
 ---
 title: fish shell的clear和fish_config失效问题
 date: Tue Jul  4 07:08:24 PM CST 2023
-tags: [linux, 疑难杂症]
+tags: [linux]
 ---
 
 # fish shell 的 clear 和 fish_config 失效问题
