@@ -11,6 +11,13 @@ import { getMarkdownFilePath } from './file'
 
 export type ArticleTag = string | number
 
+interface IImage {
+  src: string
+  width: number
+  height: number
+  format: 'png' | 'jpg' | 'jpeg' | 'tiff' | 'webp' | 'gif' | 'svg' | 'avif'
+}
+
 export interface IPostInfo {
   collection: string
   ctime: Date
@@ -21,7 +28,7 @@ export interface IPostInfo {
   mtime: Date
   tags: ArticleTag[]
   title?: string
-  cover?: string
+  cover?: IImage
   banner?: string
   reading: {
     words: number
@@ -43,6 +50,7 @@ export async function getPostInfo(entry: Entry) {
     const tags = uniq(_entry.data.tags ?? path.dirname(_entry.slug).split('/'))
     const title = _entry.data.title ?? path.basename(_entry.slug)
     const readingTime = getReadingTimeFromMarkdown(_entry.body)
+    const cover = _entry.data.cover ?? _entry.data.heroImage
     return {
       collection: _entry.collection,
       ctime,
@@ -53,6 +61,7 @@ export async function getPostInfo(entry: Entry) {
       mtime,
       tags,
       title,
+      cover,
       reading: {
         words: readingTime.words,
         minutes: readingTime.minutes,

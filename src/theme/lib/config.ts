@@ -3,7 +3,7 @@ export interface ThemeConfig {
     title: string
     description: string
     locale: `${string}-${string}`
-    url: string
+    url?: string
   }
   author: {
     name: string
