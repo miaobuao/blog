@@ -22,7 +22,7 @@ isTop: false
 
 Kotlin 支持单行和多行注释：
 
-```Kotlin
+```kotlin
 // 单行注释
 
 /* 
@@ -37,7 +37,7 @@ Kotlin 支持单行和多行注释：
 
 可变变量定义：var 关键字
 
-```Kotlin
+```kotlin
 var <标识符> : <类型> = <初始化值>
 ```
 
@@ -51,7 +51,7 @@ val <标识符> : <类型> = <初始化值>
 
 **编译器支持自动类型判断**,即声明时可以不指定类型,由编译器判断。
 
-```Kotlin
+```kotlin
 val a: Int = 1
 val b = 1       // 系统自动推断变量类型为Int
 val c: Int      // 如果不在声明时初始化则必须提供变量类型
@@ -68,7 +68,7 @@ x += 1           // 变量可修改
 
 函数定义使用关键字 fun，参数格式为：参数 : 类型
 
-```Kotlin
+```kotlin
 fun sum(a: Int, b: Int): Int {   // 两个Int类型的形参，返回值也是Int类型（Int首字母要大写！）
     return a + b
 }

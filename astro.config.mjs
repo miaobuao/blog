@@ -26,6 +26,10 @@ export default defineConfig({
     defaultStrategy: 'viewport',
   },
   markdown: {
+    syntaxHighlight: 'shiki',
+    shikiConfig: {
+      wrap: true,
+    },
     remarkPlugins: [remarkDirective, remarkGithubAdmonitionsToDirectives, remarkMath],
     rehypePlugins: [
       rehypeSlug,
