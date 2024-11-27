@@ -16,8 +16,8 @@ const { info, className } = Astro.props
 
 <div
   class={cn(
-    'card bg-base-100 w-full shadow-none border border-slate-200  dark:border-opacity-50 dark:border-slate-600',
-    'block md:hidden',
+    'card bg-base-100 w-full shadow-none block md:hidden',
+    'border border-slate-200 dark:border-opacity-50 dark:border-slate-600',
     className,
   )}
 >
@@ -35,10 +35,7 @@ const { info, className } = Astro.props
     <h2 class="card-title break-all">
       <a
         href={info.link}
-        class={cn(
-        'transition group hover:text-primary text-xl md:text-2xl w-full',
-        'dark:font-bold dark:hover:text-primary',
-      )}
+        class="transition group hover:text-primary text-xl md:text-2xl w-full dark:font-bold"
       >
         {info.title}
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="size-5  stroke-primary transition absolute group-hover:translate-x-1 translate-y-1 inline opacity-0 group-hover:opacity-100">
@@ -89,7 +86,7 @@ const { info, className } = Astro.props
         class={cn(
           'transition group hover:text-primary block font-semibold text-xl md:text-2xl w-full',
           'before:absolute before:bg-primary before:h-6 before:opacity-0 hover:before:opacity-100 before:left-[-0.1rem] before:rounded-md before:top-8 before:w-1',
-          'dark:font-bold dark:hover:text-primary dark:active:text-[var(--title-active)]',
+          'dark:font-bold dark:active:text-[var(--title-active)]',
         )}
       >
         {info.title}

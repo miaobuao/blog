@@ -48,7 +48,7 @@ const posts = await getSafePostsInfo(getCollection('blog'))
                 <slot />
               </ScrollArea>
               <ScrollArea class="w-1/4 max-w-80 h-full p-1 hidden lg:flex flex-col items-center">
-                <section class="card w-full bg-base-100 border p-1">
+                <section class="card w-full bg-base-100 p-1">
                   <TagPercentage posts={posts} />
                 </section>
               </ScrollArea>
