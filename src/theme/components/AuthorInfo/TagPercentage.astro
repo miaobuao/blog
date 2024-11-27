@@ -1,17 +1,18 @@
 ---
 import { sortBy } from 'lodash-es'
+import type { HTMLAttributes } from 'astro/types'
 import { type IPostInfo, aggregateByTag, getTagLink } from '@/theme/lib/post'
 
-export interface Props {
+export interface Props extends HTMLAttributes<'div'> {
     posts: IPostInfo[]
 }
 
-const { posts } = Astro.props
+const { posts, class: className, ...divProps } = Astro.props
 const stats = aggregateByTag(posts)
 const counts = sortBy(Array.from(stats.entries()).map(([k, v]) => [k, v.length] as const), d => d[1]).reverse()
 ---
 
-<div class="flex flex-col w-full">
+<div class:list={['flex flex-col w-full', className]} {...divProps}>
   {
     counts.map(([k, v]) => (
       <a href={getTagLink(k)}>

@@ -13,13 +13,13 @@ const avatarTargetUrl = Astro.url.pathname === '/' ? '/about' : '/'
 ---
 
 <div class={cn('bg-base-100 flex flex-row items-center mx-2 gap-2', className)} {...props}>
-  <!-- 大屏幕时展示title -->
+  <!-- 大于md时展示title -->
   <div class="md:block hidden">
     <a class="btn btn-ghost text-xl" href="/">
       {config.site.title}
     </a>
   </div>
-  <!-- 小屏幕时展示头像 -->
+  <!-- 小于md时展示头像 -->
   <a href={avatarTargetUrl} class="md:hidden">
     <AuthorAvatar class="mask mask-squircle bg-neutral w-12 text-neutral-content font-semibold text-lg" />
   </a>
