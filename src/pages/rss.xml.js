@@ -9,10 +9,8 @@ export async function GET(context) {
     description: config.site.description,
     site: context.site,
     items: posts.map(post => ({
-      description: '',
-      title: '',
-      pubDate: new Date(),
-      updatedDate: new Date(),
+      author: config.author.name,
+      pubDate: post.data.pubDate || post.data.date || post.data.ctime || new Date(),
       ...post.data,
       link: `/blog/${post.slug}/`,
     })),
