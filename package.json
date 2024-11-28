@@ -26,6 +26,7 @@
     "@iconify-json/material-symbols": "^1.1.84",
     "@iconify/react": "^5.0.1",
     "@playform/compress": "^0.0.13",
+    "@shikijs/colorized-brackets": "^1.23.1",
     "@tailwindcss/typography": "^0.5.13",
     "@types/d3": "^7.4.3",
     "@types/jsdom": "^21.1.7",

@@ -4,6 +4,7 @@ import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import tailwind from '@astrojs/tailwind'
 import playformCompress from '@playform/compress'
+import { transformerColorizedBrackets } from '@shikijs/colorized-brackets'
 import remarkGithubAdmonitionsToDirectives from 'remark-github-admonitions-to-directives'
 import remarkDirective from 'remark-directive'
 import remarkMath from 'remark-math'
@@ -29,6 +30,7 @@ export default defineConfig({
     syntaxHighlight: 'shiki',
     shikiConfig: {
       wrap: true,
+      transformers: [transformerColorizedBrackets()],
     },
     remarkPlugins: [remarkDirective, remarkGithubAdmonitionsToDirectives, remarkMath],
     rehypePlugins: [
