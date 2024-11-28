@@ -2,6 +2,7 @@
 title: frontmatter介绍
 date: 2024-11-26 15:02:44
 tags: [主题]
+cover: ./images/孤独摇滚-波奇酱.png
 ---
 
 # frontmatter介绍

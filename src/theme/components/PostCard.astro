@@ -1,5 +1,7 @@
 ---
+import { ChevronRight } from 'lucide-vue-next'
 import type { ClassValue } from 'clsx'
+import { Image } from 'astro:assets'
 import LinkButton from './ui/button.astro'
 import { cn } from '@/theme/lib/utils'
 import { type IPostInfo, getTagLink } from '@/theme/lib/post'
@@ -14,21 +16,25 @@ const { info, className } = Astro.props
 
 ---
 
+<!-- 小于md时显示 -->
 <div
-  class={cn(
-    'card bg-base-100 w-full shadow-none block md:hidden',
-    'border border-slate-200 dark:border-opacity-50 dark:border-slate-600',
+  class:list={[
+    'md:hidden card bg-base-100 border border-base-300 shadow-sm',
     className,
-  )}
+  ]}
 >
 {
   info.cover && (
-  <figure class="w-full">
-    <img
-      {...info.cover}
-      class="w-full max-h-[150px] object-cover"
-    />
-  </figure>
+    <a href={info.link} class="bg-black relative group">
+        <Image
+          {...info.cover}
+          src={info.cover}
+          alt=""
+          loading="lazy"
+          class="w-full aspect-video object-cover rounded-t-box hover:opacity-50 hover:blur-sm transition-all"
+        />
+        <ChevronRight class="opacity-0 text-white group-hover:opacity-100 transition-all pointer-events-none absolute size-20 top-[50%] left-[50%] group-hover:translate-x-[-50%] translate-y-[-50%]" />
+    </a>
   )
 }
   <div class="card-body py-4 px-5 gap-y-1">
@@ -77,8 +83,9 @@ const { info, className } = Astro.props
   </div>
 </div>
 
+<!-- 大于md时显示 -->
 
-<div class="md:block hidden bg-base-100 relative rounded-box border-slate-200 border dark:border-opacity-50 dark:border-slate-600">
+<div class="md:block hidden bg-base-100 relative rounded-box border border-base-300">
   <div class="flex items-stretch">
     <div class="flex-1 flex flex-col break-all pb-6 pt-7 px-8 gap-y-5">
       <a
@@ -133,12 +140,20 @@ const { info, className } = Astro.props
     <!-- cover -->
      {
       info.cover && (
-        <figure class="w-72">
-          <img
-            {...info.cover}
-            class="h-full object-cover  rounded-r-box"
-          />
-        </figure>
+        <a href={info.link} class="relative group">
+          <figure class="bg-black h-full group-hover:scale-[0.9] transition-all group-hover:rounded-2xl">
+            <Image
+              {...info.cover}
+              src={info.cover}
+              alt=""
+              loading="lazy"
+              class="h-full max-w-64 object-cover rounded-r-box hover:rounded-2xl hover:opacity-50 transition-all"
+            />
+          </figure>
+
+        <ChevronRight class="opacity-0 text-white group-hover:opacity-100 transition-all pointer-events-none absolute size-20 top-[50%] left-[50%] group-hover:translate-x-[-50%] translate-y-[-50%]" />
+
+        </a>
       )
      }
   </div>

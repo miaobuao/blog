@@ -5,7 +5,20 @@ module.exports = {
   prefix: '',
   theme: ['light', 'dark'],
   daisyui: {
-    themes: ['lofi', 'black'],
+    themes: [
+      {
+        lofi: {
+          ...require('daisyui/src/theming/themes').lofi,
+          primary: require('daisyui/src/theming/themes').light.primary,
+        },
+      },
+      {
+        black: {
+          ...require('daisyui/src/theming/themes').black,
+          primary: require('daisyui/src/theming/themes').dark.primary,
+        },
+      },
+    ],
     darkTheme: 'black',
   },
   plugins: [
