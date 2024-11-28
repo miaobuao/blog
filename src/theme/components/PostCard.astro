@@ -1,10 +1,11 @@
 ---
 import { ChevronRight } from 'lucide-vue-next'
 import type { ClassValue } from 'clsx'
-import { Image } from 'astro:assets'
+import { Picture } from 'astro:assets'
+import { marked } from 'marked'
 import LinkButton from './ui/button.astro'
 import { cn } from '@/theme/lib/utils'
-import { type IPostInfo, getTagLink } from '@/theme/lib/post'
+import { type IPostInfo, extractBeforeMore, getTagLink } from '@/theme/lib/post'
 import { formatDatetime } from '@/theme/lib/date'
 
 export interface Props {
@@ -13,7 +14,8 @@ export interface Props {
 }
 
 const { info, className } = Astro.props
-
+const summary = extractBeforeMore(info.body)
+const summaryHtml = marked(summary)
 ---
 
 <!-- 小于md时显示 -->
@@ -25,28 +27,28 @@ const { info, className } = Astro.props
 >
 {
   info.cover && (
-    <a href={info.link} class="bg-black relative group">
-        <Image
+    <a href={info.link} class="bg-black rounded-t-box relative group">
+        <Picture
           {...info.cover}
           src={info.cover}
-          alt=""
+          alt="cover"
           loading="lazy"
+          width={Math.min(500, info.cover.width)}
+          formats={['avif', 'webp']}
           class="w-full aspect-video object-cover rounded-t-box hover:opacity-50 hover:blur-sm transition-all"
         />
         <ChevronRight class="opacity-0 text-white group-hover:opacity-100 transition-all pointer-events-none absolute size-20 top-[50%] left-[50%] group-hover:translate-x-[-50%] translate-y-[-50%]" />
     </a>
   )
 }
-  <div class="card-body py-4 px-5 gap-y-1">
-    <h2 class="card-title break-all">
+  <div class="card-body py-4 px-5 gap-2">
+    <h2 class="card-title">
       <a
         href={info.link}
         class="transition group hover:text-primary text-xl md:text-2xl w-full dark:font-bold"
       >
         {info.title}
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="size-5  stroke-primary transition absolute group-hover:translate-x-1 translate-y-1 inline opacity-0 group-hover:opacity-100">
-          <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-        </svg>
+        <ChevronRight class="size-5  stroke-primary transition absolute group-hover:translate-x-1 translate-y-1 inline opacity-0 group-hover:opacity-100" />
       </a>
     </h2>
 
@@ -63,10 +65,8 @@ const { info, className } = Astro.props
 
     <!-- summary -->
     {
-      info.description && (
-        <p class="break-all text-lg">
-          {info.description}
-        </p>
+      summary.length > 0 && (
+        <article class="break-all prose prose-sm max-w-none" set:html={summaryHtml} />
       )
     }
 
@@ -85,9 +85,8 @@ const { info, className } = Astro.props
 
 <!-- 大于md时显示 -->
 
-<div class="md:block hidden bg-base-100 relative rounded-box border border-base-300">
-  <div class="flex items-stretch">
-    <div class="flex-1 flex flex-col break-all pb-6 pt-7 px-8 gap-y-5">
+<div class="md:flex hidden items-stretch bg-base-100 relative rounded-box border border-base-300">
+    <div class:list={['flex flex-col pb-6 pt-7 px-8 gap-y-5', { 'basis-2/3': info.cover }]}>
       <a
         href={info.link}
         class={cn(
@@ -97,9 +96,7 @@ const { info, className } = Astro.props
         )}
       >
         {info.title}
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="size-5  stroke-primary transition absolute group-hover:translate-x-1 translate-y-1 inline opacity-0 group-hover:opacity-100">
-          <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-        </svg>
+        <ChevronRight class="size-5 stroke-primary transition absolute group-hover:translate-x-1 translate-y-1.5 inline opacity-0 group-hover:opacity-100" />
       </a>
 
       <!-- tags -->
@@ -118,21 +115,17 @@ const { info, className } = Astro.props
 
       <!-- summary -->
       {
-        info.description && (
-          <p class="break-all text-lg">
-            {info.description}
-          </p>
+        summary.length > 0 && (
+          <article class="break-all prose prose-sm max-w-none" set:html={summaryHtml} />
         )
       }
 
       <!-- metadata -->
-      <p class="opacity-80 text-sm font-mono">
+      <p class="opacity-80 text-sm font-mono break-keep whitespace-nowrap">
         {formatDatetime(info.ctime)}
-        {' · '}
-        {info.reading.words}
-        {' '}
-        Words ·
-        {' '}
+        ·
+        {`${info.reading.words} Words`}
+        ·
         {info.reading.text}
       </p>
     </div>
@@ -140,21 +133,20 @@ const { info, className } = Astro.props
     <!-- cover -->
      {
       info.cover && (
-        <a href={info.link} class="relative group">
-          <figure class="bg-black h-full group-hover:scale-[0.9] transition-all group-hover:rounded-2xl">
-            <Image
+        <a href={info.link} class="relative group flex-1 h-full">
+          <figure class="bg-black w-full h-full group-hover:scale-[0.9] transition-all rounded-r-box group-hover:rounded-2xl">
+            <Picture
               {...info.cover}
               src={info.cover}
-              alt=""
+              alt="cover"
               loading="lazy"
-              class="h-full max-w-64 object-cover rounded-r-box hover:rounded-2xl hover:opacity-50 transition-all"
+              formats={['avif', 'webp']}
+              width={Math.min(500, info.cover.width)}
+              class="h-full w-full object-cover rounded-r-box hover:rounded-2xl hover:opacity-50 transition-all"
             />
           </figure>
-
-        <ChevronRight class="opacity-0 text-white group-hover:opacity-100 transition-all pointer-events-none absolute size-20 top-[50%] left-[50%] group-hover:translate-x-[-50%] translate-y-[-50%]" />
-
+          <ChevronRight class="opacity-0 text-white group-hover:opacity-100 transition-all pointer-events-none absolute size-20 top-[50%] left-[50%] group-hover:translate-x-[-50%] translate-y-[-50%]" />
         </a>
       )
      }
-  </div>
 </div>

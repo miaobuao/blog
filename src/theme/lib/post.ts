@@ -5,6 +5,8 @@ import { toString } from 'mdast-util-to-string'
 import { fromMarkdown } from 'mdast-util-from-markdown'
 import { uniq } from 'lodash-es'
 import type { MaybePromise } from 'astro/actions/runtime/utils.js'
+import * as visit from 'unist-util-visit'
+import { remark } from 'remark'
 import { getFirstCommitTime, getLastCommitTime } from './git'
 import { readMap } from './map'
 import { getMarkdownFilePath } from './file'
@@ -23,6 +25,7 @@ export interface IPostInfo {
   title?: string
   cover?: ImageMetadata
   banner?: string
+  body: string
   reading: {
     words: number
     minutes: number
@@ -55,6 +58,7 @@ export async function getPostInfo(entry: Entry) {
       tags,
       title,
       cover,
+      body: _entry.body,
       reading: {
         words: readingTime.words,
         minutes: readingTime.minutes,
@@ -63,6 +67,27 @@ export async function getPostInfo(entry: Entry) {
       },
     }
   })
+}
+
+export function extractBeforeMore(markdown: string) {
+  const tree = remark().parse(markdown)
+  let foundMore = false
+  let offset = 0
+  const moreRegex = /^<!--\s*more\s*-->$/i
+  visit.visit(tree, (node) => {
+    if (node.type === 'root')
+      return
+    if (node.type === 'html' && moreRegex.test(node.value.trim())) {
+      foundMore = true
+      offset = node.position?.start.offset ?? 0
+      return visit.EXIT // Exit early since we found the <!-- more -->
+    }
+  })
+
+  if (foundMore) {
+    return markdown.slice(0, offset)
+  }
+  return ''
 }
 
 export async function getAllPostsInfo(collection: MaybePromise<Entry[]>) {
