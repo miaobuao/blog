@@ -15,11 +15,12 @@ const counts = sortBy(Array.from(stats.entries()).map(([k, v]) => [k, v.length] 
 <div class:list={['flex flex-col w-full', className]} {...divProps}>
   {
     counts.map(([k, v]) => (
-      <a href={getTagLink(k)}>
-        <div class="flex transition items-center gap-x-1 p-1 rounded-btn hover:bg-primary hover:bg-opacity-20">
+      <a
+        href={getTagLink(k)}
+        class="flex transition items-center gap-1 p-1 rounded-btn hover:bg-primary hover:bg-opacity-20"
+      >
           <div class="w-16 text-xs text-center truncate">{k}</div>
           <progress class="progress flex-1" value={v / posts.length} max="1"></progress>
-        </div>
       </a>
     ))
   }

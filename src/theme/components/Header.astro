@@ -1,6 +1,5 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
-import HeaderLink from './HeaderLink.astro'
 import AuthorAvatar from './AuthorInfo/AuthorAvatar.astro'
 import Search from './Search.astro'
 import config from '@/consts'
@@ -24,20 +23,5 @@ const avatarTargetUrl = Astro.url.pathname === '/' ? '/about' : '/'
     <AuthorAvatar class="mask mask-squircle bg-neutral w-12 text-neutral-content font-semibold text-lg" />
   </a>
 
-  <Search class="md:hidden m-2" blur />
-
-  <ul class="px-1 gap-x-1 hidden md:menu md:menu-horizontal">
-    <li>
-      <HeaderLink href="/">
-        Blog
-      </HeaderLink>
-    </li>
-    <li>
-      <HeaderLink href="/about">
-        About Me
-      </HeaderLink>
-    </li>
-  </ul>
-
-  <Search class="hidden md:flex flex-1 max-w-96 m-2 ml-auto mr-4" />
+  <Search class="m-2 md:flex-1 md:max-w-96 md:m-2 md:ml-auto md:mr-4" />
 </div>

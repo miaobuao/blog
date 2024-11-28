@@ -56,6 +56,7 @@
     "lucide-vue-next": "^0.461.0",
     "mdast-util-from-markdown": "^2.0.1",
     "mdast-util-to-string": "^4.0.0",
+    "numbro": "^2.5.0",
     "pagefind": "^1.2.0",
     "preact": "^10.22.1",
     "prettier": "^3.3.2",
