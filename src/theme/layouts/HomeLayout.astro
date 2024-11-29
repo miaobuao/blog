@@ -7,7 +7,6 @@ import AuthorInfoCard from '@/theme/components/AuthorInfo/AuthorInfoCard.astro'
 import TagPercentage from '@/theme/components/AuthorInfo/TagPercentage.astro'
 import BaseHead from '@/theme/components/BaseHead.astro'
 import config from '@/consts'
-import DarkModeAdaptor from '@/theme/components/DarkModeAdaptor.astro'
 import ScrollArea from '@/theme/components/ScrollArea.astro'
 import { getSafePostsInfo } from '@/theme/lib/post'
 
@@ -20,28 +19,21 @@ const posts = await getSafePostsInfo(getCollection('blog'))
     <BaseHead title={config.site.title} description={config.site.description} />
     <!-- <DarkModeAdaptor /> -->
   </head>
-  <body>
-    <div class="flex flex-col w-screen h-screen">
-      <Header />
-      <!-- Desktop -->
-      <div class="hidden md:flex flex-1 w-full overflow-y-auto">
-        <ScrollArea class="basis-1/4 max-w-80 h-full p-1 md:p-2 flex flex-col gap-4">
-          <AuthorInfoCard class="p-2 lg:p-4 lg:px-8" />
-          <TagPercentage class="w-full lg:hidden" posts={posts} />
-        </ScrollArea>
-        <ScrollArea class="flex-1 h-full">
-          <slot />
-        </ScrollArea>
-        <ScrollArea class="basis-1/4 max-w-80 h-full p-1 hidden lg:flex flex-col items-center">
-          <section class="card w-full bg-base-100 p-1">
-            <TagPercentage posts={posts} />
-          </section>
-        </ScrollArea>
-      </div>
-      <!-- Mobile -->
-      <div class="flex-1 w-full overflow-y-auto md:hidden">
-          <slot />
-      </div>
+  <body class="flex flex-col w-screen h-screen">
+    <Header />
+    <div class="flex flex-1 w-full overflow-y-auto">
+      <ScrollArea class="md:flex hidden basis-1/4 max-w-80 h-full p-1 md:p-2 flex-col gap-4">
+        <AuthorInfoCard class="p-2 lg:p-4 lg:px-8" />
+        <TagPercentage class="w-full lg:hidden" posts={posts} />
+      </ScrollArea>
+      <ScrollArea class="flex-1 h-full">
+        <slot />
+      </ScrollArea>
+      <ScrollArea class="hidden lg:flex basis-1/4 max-w-80 h-full p-1 flex-col items-center">
+        <section class="card w-full bg-base-100 p-1">
+          <TagPercentage posts={posts} />
+        </section>
+      </ScrollArea>
     </div>
   </body>
 </html>
