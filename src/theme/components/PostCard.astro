@@ -18,75 +18,24 @@ const summary = extractBeforeMore(info.body)
 const summaryHtml = marked(summary)
 ---
 
-<!-- 小于md时显示 -->
-<div
-  class:list={[
-    'md:hidden card bg-base-100 border border-base-300 shadow-sm',
-    className,
-  ]}
->
-{
-  info.cover && (
-    <a href={info.link} class="bg-black rounded-t-box relative group">
+<div class:list={['flex relative rounded-box border border-base-300', className]}>
+  <!-- cover -->
+  {
+    info.cover && (
+      <a href={info.link} class="absolute w-full h-full top-0 left-0">
         <Picture
           {...info.cover}
           src={info.cover}
           alt="cover"
           loading="lazy"
-          width={Math.min(500, info.cover.width)}
           formats={['avif', 'webp']}
-          class="w-full aspect-video object-cover rounded-t-box hover:opacity-50 hover:blur-sm transition-all"
+          width={Math.min(500, info.cover.width)}
+          class="h-full w-full object-cover rounded-box"
         />
-        <ChevronRight class="opacity-0 text-white group-hover:opacity-100 transition-all pointer-events-none absolute size-20 top-[50%] left-[50%] group-hover:translate-x-[-50%] translate-y-[-50%]" />
-    </a>
-  )
-}
-  <div class="card-body py-4 px-5 gap-2">
-    <h2 class="card-title">
-      <a
-        href={info.link}
-        class="transition group hover:text-primary text-xl md:text-2xl w-full dark:font-bold"
-      >
-        {info.title}
-        <ChevronRight class="size-5  stroke-primary transition absolute group-hover:translate-x-1 translate-y-1 inline opacity-0 group-hover:opacity-100" />
       </a>
-    </h2>
-
-    <!-- tags -->
-    <div class="flex items-center h-full gap-x-2 opacity-80">
-        {
-          info.tags.map(tag => (
-            <LinkButton className="p-0 h-full font-normal text-sm hover:text-primary" href={getTagLink(tag)}>
-              #{tag}
-            </LinkButton>
-          ))
-        }
-    </div>
-
-    <!-- summary -->
-    {
-      summary.length > 0 && (
-        <article class="break-all prose prose-sm max-w-none" set:html={summaryHtml} />
-      )
-    }
-
-    <!-- metadata -->
-    <p class="opacity-80 text-sm font-mono">
-      {formatDatetime(info.ctime)}
-      {' · '}
-      {info.reading.words}
-      {' '}
-      Words ·
-      {' '}
-      {info.reading.text}
-    </p>
-  </div>
-</div>
-
-<!-- 大于md时显示 -->
-
-<div class="md:flex hidden items-stretch bg-base-100 relative rounded-box border border-base-300">
-    <div class:list={['flex flex-col pb-6 pt-7 px-8 gap-y-5', { 'basis-2/3': info.cover }]}>
+    )
+  }
+  <div class:list={['flex w-full flex-col pb-6 pt-7 px-8 gap-y-5 rounded-box bg-base-100/60 backdrop-blur-none']}>
       <a
         href={info.link}
         class={cn(
@@ -100,7 +49,7 @@ const summaryHtml = marked(summary)
       </a>
 
       <!-- tags -->
-      <div class="flex items-center gap-x-2 opacity-80">
+      <div class="flex items-center gap-x-2">
         {
           info.tags.map(tag => (
             <LinkButton
@@ -121,32 +70,12 @@ const summaryHtml = marked(summary)
       }
 
       <!-- metadata -->
-      <p class="opacity-80 text-sm font-mono break-keep whitespace-nowrap">
+      <p class="text-sm font-mono break-keep whitespace-nowrap">
         {formatDatetime(info.ctime)}
         ·
         {`${info.reading.words} Words`}
         ·
         {info.reading.text}
       </p>
-    </div>
-
-    <!-- cover -->
-     {
-      info.cover && (
-        <a href={info.link} class="relative group flex-1 h-full">
-          <figure class="bg-black w-full h-full group-hover:scale-[0.9] transition-all rounded-r-box group-hover:rounded-2xl">
-            <Picture
-              {...info.cover}
-              src={info.cover}
-              alt="cover"
-              loading="lazy"
-              formats={['avif', 'webp']}
-              width={Math.min(500, info.cover.width)}
-              class="h-full w-full object-cover rounded-r-box hover:rounded-2xl hover:opacity-50 transition-all"
-            />
-          </figure>
-          <ChevronRight class="opacity-0 text-white group-hover:opacity-100 transition-all pointer-events-none absolute size-20 top-[50%] left-[50%] group-hover:translate-x-[-50%] translate-y-[-50%]" />
-        </a>
-      )
-     }
+  </div>
 </div>
