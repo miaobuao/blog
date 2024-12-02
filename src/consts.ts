@@ -8,7 +8,7 @@ const config = defineThemeConfig({
     url: 'https://yangqiuyi.com',
   },
   author: {
-    name: '@杨秋逸',
+    name: '杨秋逸',
     email: 'miaobuao@outlook.com',
     signature: 'To Be A Geek :)',
     avatar: {
