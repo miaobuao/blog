@@ -6,33 +6,48 @@ import BaseHead from '../components/BaseHead.astro'
 import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
 import FormattedDate from '../components/ui/FormattedDate.astro'
-import DarkModeAdaptor from '../components/DarkModeAdaptor.astro'
 import { getLanguageCode } from '../lib/utils'
 
 type Props = CollectionEntry<'blog'>['data']
 
 const { title, description, pubDate, updatedDate } = Astro.props
 ---
+<script>
+  import 'giscus'
+</script>
 
 <html lang={getLanguageCode()}>
   <head>
     <BaseHead title={title} description={description} />
-    <!-- <DarkModeAdaptor /> -->
   </head>
   <body>
-    <Header class="sticky top-0" />
-    <main class="flex justify-center items-center">
-      <article class="prose dark:prose-invert p-4" data-pagefind-body>
-      {pubDate && <FormattedDate date={pubDate} />}
-        {
-          updatedDate && (
-            <div class="last-updated-on">
-              Last updated on <FormattedDate date={updatedDate} />
-            </div>
-          )
-        }
+    <Header class="sticky top-0 z-50" />
+    <main class="prose dark:prose-invert p-4 mx-auto flex flex-col gap-8" data-pagefind-body>
+      <article>
         <slot />
       </article>
+      {pubDate && <FormattedDate date={pubDate} />}
+      {
+        updatedDate && (
+          <div class="last-updated-on">
+            Last updated on <FormattedDate date={updatedDate} />
+          </div>
+        )
+      }
+      <giscus-widget
+        src="https://giscus.app/client.js"
+        repo="miaobuao/miaobuao.github.io"
+        repoId="R_kgDOJONNeg"
+        categoryId="DIC_kwDOJONNes4CVJhu"
+        mapping="og:title"
+        strict="0"
+        reactionsEnabled="1"
+        emitMetadata="0"
+        inputPosition="top"
+        theme="preferred_color_scheme"
+        lang="zh-CN"
+        loading="lazy"
+      />
     </main>
     <Footer />
   </body>
