@@ -1,15 +1,15 @@
 ---
-import '../styles/post.scss'
+import config from '@/consts'
 import { getEntry } from 'astro:content'
 import { isNil } from 'ramda'
+import ArticleToc from '../components/ArticleToc.astro'
 import BaseHead from '../components/BaseHead.astro'
-import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
-import Toc from '../components/Toc.astro'
-import { getLanguageCode } from '../lib/utils'
+import Header from '../components/Header.astro'
 import LicenseCard from '../components/LicenseCard.astro'
 import ScrollArea from '../components/ScrollArea.astro'
-import config from '@/consts'
+import { getLanguageCode } from '../lib/utils'
+import '../styles/post.scss'
 
 type Props = {
   slug: string
@@ -39,7 +39,7 @@ const { data: { title, description } } = product;
       <section class="basis-1/5 lg:flex hidden" />
       <ScrollArea id="main-scroll" class="flex-1">
         <main class="max-w-prose p-4 mx-auto flex flex-col gap-8">
-          <article class="prose prose-sm sm:prose-base 2xl:prose-lg dark:prose-invert" data-pagefind-body>
+          <article class="prose dark:prose-invert" data-pagefind-body>
             <Content />
           </article>
           <LicenseCard
@@ -59,12 +59,13 @@ const { data: { title, description } } = product;
             inputPosition="top"
             theme="preferred_color_scheme"
             lang="zh-CN"
+            loading="lazy"
           />
         </main>
         <Footer />
       </ScrollArea>
       <ScrollArea class="basis-1/5 lg:flex flex-col hidden">
-        <Toc headings={headings} />
+        <ArticleToc headings={headings} />
       </ScrollArea>
     </ScrollArea>
   </body>
