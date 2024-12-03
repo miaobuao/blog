@@ -15,6 +15,7 @@ export type ArticleTag = string | number
 
 export interface IPostInfo {
   collection: string
+  slug: string
   ctime: Date
   description?: string
   id: string
@@ -49,6 +50,7 @@ export async function getPostInfo(entry: Entry) {
     const cover = _entry.data.cover ?? _entry.data.heroImage
     return {
       collection: _entry.collection,
+      slug: _entry.slug,
       ctime,
       description: _entry.data.description,
       id: _entry.id,
