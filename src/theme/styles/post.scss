@@ -14,4 +14,24 @@
   img {
     max-width: 100%;
   }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    a {
+      @apply no-underline;
+
+      &:hover {
+        @apply underline relative;
+        &::before {
+          @apply absolute -left-1;
+          content: "#";
+          transform: translateX(-100%);
+        }
+      }
+    }
+  }
 }

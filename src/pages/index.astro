@@ -19,7 +19,7 @@ const posts = await getAllPostsInfo(getCollection('blog')).then(
 ---
 
 <HomeLayout>
-  <div class="grid gap-y-4 p-2">
+  <div class="flex flex-col gap-4 p-2">
     {
         posts.map(p => <PostCard info={p}></PostCard>)
     }

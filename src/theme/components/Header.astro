@@ -3,7 +3,6 @@ import type { HTMLAttributes } from 'astro/types'
 import AuthorAvatar from './AuthorInfo/AuthorAvatar.astro'
 import Search from './Search.astro'
 import config from '@/consts'
-import { cn } from '@/theme/lib/utils'
 
 type Props = HTMLAttributes<'header'>
 
@@ -11,7 +10,7 @@ const { class: className, ...props } = Astro.props
 const avatarTargetUrl = Astro.url.pathname === '/' ? '/about' : '/'
 ---
 
-<div class={cn('bg-base-100 flex flex-row items-center mx-2 gap-2', className)} {...props}>
+<header class:list={['bg-base-100 flex flex-row items-center px-2 gap-2', className]} {...props}>
   <!-- 大于md时展示title -->
   <div class="md:block hidden">
     <a class="btn btn-ghost text-xl" href="/">
@@ -24,4 +23,4 @@ const avatarTargetUrl = Astro.url.pathname === '/' ? '/about' : '/'
   </a>
 
   <Search class="m-2 md:flex-1 md:max-w-96 md:m-2 md:ml-auto md:mr-4" />
-</div>
+</header>

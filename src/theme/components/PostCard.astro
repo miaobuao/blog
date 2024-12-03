@@ -4,7 +4,6 @@ import type { ClassValue } from 'clsx'
 import { Picture } from 'astro:assets'
 import { marked } from 'marked'
 import LinkButton from './ui/button.astro'
-import { cn } from '@/theme/lib/utils'
 import { type IPostInfo, extractBeforeMore, getTagLink } from '@/theme/lib/post'
 import { formatDatetime } from '@/theme/lib/date'
 
@@ -35,19 +34,29 @@ const summaryHtml = marked(summary)
       </a>
     )
   }
-  <div class:list={['flex w-full flex-col p-4 gap-2 md:p-6 md:gap-y-5 rounded-box bg-base-100/60 backdrop-blur-none']}>
+  <div class:list={[
+    'flex w-full flex-col p-4 gap-2 rounded-box bg-base-100/60 backdrop-blur-none',
+    'md:(p-6 gap-y-5)',
+  ]}
+  >
       <a
         href={info.link}
-        class={cn(
-          'transition group hover:text-primary block font-semibold text-xl md:text-2xl w-full',
-          'before:absolute before:bg-primary before:opacity-0 hover:before:opacity-100 before:left-[-0.1rem] before:rounded-md before:w-1',
-          'before:h-5 before:top-5',
-          'md:before:h-6 md:before:top-7',
-          'dark:font-bold dark:active:text-[var(--title-active)]',
-        )}
+        class:list={[
+          'transition group block font-semibold text-xl relative',
+          'md:text-2xl',
+          'hover:(text-primary)',
+          'dark:(font-bold)',
+        ]}
       >
+        <div
+          class:list={[
+            'transition bg-primary w-1 h-full rounded-md absolute -left-4 opacity-0',
+            'md:(-left-6)',
+            'group-hover:(opacity-100)',
+          ]}
+        ></div>
         {info.title}
-        <ChevronRight class="size-5 stroke-primary transition absolute group-hover:translate-x-1 translate-y-1.5 inline opacity-0 group-hover:opacity-100" />
+        <ChevronRight class="size-5 stroke-primary transition absolute translate-y-1.5 md:translate-y-2 inline opacity-0 group-hover:(translate-x-1 opacity-100)" />
       </a>
 
       <!-- tags -->

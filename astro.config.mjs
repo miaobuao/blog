@@ -12,8 +12,7 @@ import rehypeAutoLinkHeadings from 'rehype-autolink-headings'
 import rehypeKatex from 'rehype-katex'
 import rehypeSlug from 'rehype-slug'
 import vue from '@astrojs/vue'
-import tailwindcss from 'tailwindcss'
-import autoprefixer from 'autoprefixer'
+import UnoCSS from 'unocss/astro'
 import config from './src/consts'
 
 // https://astro.build/config
@@ -21,14 +20,6 @@ export default defineConfig({
   site: config.site.url,
   vite: {
     assetsInclude: ['**/*.{zip,jpg,jpeg,png,gif,webp,svg,bmp}'],
-    css: {
-      postcss: {
-        plugins: [
-          tailwindcss,
-          autoprefixer,
-        ],
-      },
-    },
   },
   prefetch: {
     prefetchAll: true,
@@ -54,14 +45,17 @@ export default defineConfig({
   },
   integrations: [
     mdx(),
-    sitemap(),
+    vue(),
+    UnoCSS({
+      injectReset: true,
+    }),
     playformCompress({
       CSS: true,
       HTML: true,
       JavaScript: true,
       SVG: true,
     }),
-    vue(),
+    sitemap(),
     pagefind(),
   ],
 })

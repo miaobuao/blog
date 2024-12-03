@@ -1,6 +1,5 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
-import { cn } from '@/theme/lib/utils'
 
 interface Props extends HTMLAttributes<'div'> {
   url: string
@@ -51,12 +50,12 @@ customElements.define('avatar-component', AvatarComponent)
 </script>
 
 <avatar-component class="relative select-none block">
-  <div class={cn('avatar placeholder', 'visible')}>
+  <div class:list={['avatar placeholder', 'visible']}>
     <div {...otherProps}>
       {alt}
     </div>
   </div>
-  <div class={cn('avatar absolute top-0 left-0 invisible')}>
+  <div class="avatar absolute top-0 left-0 invisible">
     <div {...otherProps}>
       <img src={url} alt={alt} loading="lazy" />
     </div>

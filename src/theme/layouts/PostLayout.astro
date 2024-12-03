@@ -1,5 +1,4 @@
 ---
-import '../styles/globals.css'
 import '../styles/post.scss'
 import { getEntry } from 'astro:content'
 import { isNil } from 'ramda'
@@ -11,7 +10,6 @@ import { getLanguageCode } from '../lib/utils'
 import LicenseCard from '../components/LicenseCard.astro'
 import ScrollArea from '../components/ScrollArea.astro'
 import config from '@/consts'
-
 
 type Props = {
   slug: string
@@ -39,9 +37,9 @@ const { data: { title, description } } = product;
     <Header />
     <ScrollArea class="flex-1 flex w-full">
       <section class="basis-1/5 lg:flex hidden" />
-      <ScrollArea class="flex-1">
-        <main class="prose prose-sm sm:prose-base 2xl:prose-lg dark:prose-invert p-4 mx-auto flex flex-col gap-8" data-pagefind-body>
-          <article>
+      <ScrollArea id="main-scroll" class="flex-1">
+        <main class="max-w-prose p-4 mx-auto flex flex-col gap-8">
+          <article class="prose prose-sm sm:prose-base 2xl:prose-lg dark:prose-invert" data-pagefind-body>
             <Content />
           </article>
           <LicenseCard
@@ -71,22 +69,3 @@ const { data: { title, description } } = product;
     </ScrollArea>
   </body>
 </html>
-
-
-<style>
-  article {
-    h1, h2, h3, h4, h5, h6 {
-      a {
-        @apply no-underline;
-      }
-      a:hover {
-        @apply underline relative;
-        &::before {
-          @apply absolute -left-1;
-          content: "#";
-          transform: translateX(-100%);
-        }
-      }
-    }
-  }
-</style>

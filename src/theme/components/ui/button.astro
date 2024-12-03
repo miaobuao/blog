@@ -1,6 +1,5 @@
 ---
 import type { ClassValue } from 'clsx'
-import { cn } from '@/theme/lib/utils'
 
 interface Props {
   className?: ClassValue
@@ -10,6 +9,9 @@ interface Props {
 const { className, href } = Astro.props;
 ---
 
-<a class={cn('hover:underline underline-offset-2', className)} href={href}>
+<a
+  class:list={['hover:underline underline-offset-2', className]}
+  href={href}
+>
   <slot />
 </a>
