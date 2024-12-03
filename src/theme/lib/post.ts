@@ -122,5 +122,5 @@ export function aggregateByTag(posts: IPostInfo[]) {
 }
 
 export function getTagLink(tag: ArticleTag) {
-  return `/archive/tag/${(tag)}`
+  return `/archive/tag/${encodeURIComponent(tag)}`
 }
