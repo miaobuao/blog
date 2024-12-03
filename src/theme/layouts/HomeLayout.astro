@@ -18,9 +18,9 @@ const posts = await getSafePostsInfo(getCollection('blog'))
   <head>
     <BaseHead title={config.site.title} description={config.site.description} />
   </head>
-  <body class="flex flex-col w-screen h-screen">
+  <body class="flex flex-col h-screen">
     <Header />
-    <div class="flex flex-1 w-full overflow-y-auto">
+    <ScrollArea class="flex flex-1 w-full">
       <ScrollArea class="md:flex hidden basis-1/4 max-w-80 h-full p-1 md:p-2 flex-col gap-4">
         <AuthorInfoCard class="p-2 lg:p-4 lg:px-8" />
         <TagPercentage class="w-full lg:hidden" posts={posts} />
@@ -33,6 +33,6 @@ const posts = await getSafePostsInfo(getCollection('blog'))
           <TagPercentage posts={posts} />
         </section>
       </ScrollArea>
-    </div>
+    </ScrollArea>
   </body>
 </html>

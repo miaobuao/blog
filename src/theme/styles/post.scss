@@ -1,6 +1,16 @@
+* {
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+}
+
 .prose {
-  width: 100%;
-  // word-break: break-all;
+  code {
+    &,
+    * {
+      white-space: pre;
+    }
+  }
   img {
     max-width: 100%;
   }

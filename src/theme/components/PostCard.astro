@@ -40,7 +40,9 @@ const summaryHtml = marked(summary)
         href={info.link}
         class={cn(
           'transition group hover:text-primary block font-semibold text-xl md:text-2xl w-full',
-          'before:absolute before:bg-primary before:h-6 before:opacity-0 hover:before:opacity-100 before:left-[-0.1rem] before:rounded-md before:top-8 before:w-1',
+          'before:absolute before:bg-primary before:opacity-0 hover:before:opacity-100 before:left-[-0.1rem] before:rounded-md before:w-1',
+          'before:h-5 before:top-5',
+          'md:before:h-6 md:before:top-7',
           'dark:font-bold dark:active:text-[var(--title-active)]',
         )}
       >

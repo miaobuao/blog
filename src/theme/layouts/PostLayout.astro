@@ -1,19 +1,32 @@
 ---
 import '../styles/globals.css'
 import '../styles/post.scss'
-import type { CollectionEntry } from 'astro:content'
+import { getEntry } from 'astro:content'
+import { isNil } from 'ramda'
 import BaseHead from '../components/BaseHead.astro'
 import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
-import FormattedDate from '../components/ui/FormattedDate.astro'
+import Toc from '../components/Toc.astro'
 import { getLanguageCode } from '../lib/utils'
 import LicenseCard from '../components/LicenseCard.astro'
+import ScrollArea from '../components/ScrollArea.astro'
 import config from '@/consts'
 
-type Props = CollectionEntry<'blog'>['data']
 
-const { title, description, pubDate, updatedDate } = Astro.props
+type Props = {
+  slug: string
+}
+
+const { slug } = Astro.props
+
+const product = await getEntry('blog', slug)
+if (isNil(product)) {
+  throw new Error(`${slug} not found`)
+}
+const { Content, headings } = await product.render()
+const { data: { title, description } } = product;
 ---
+
 <script>
   import 'giscus'
 </script>
@@ -22,41 +35,58 @@ const { title, description, pubDate, updatedDate } = Astro.props
   <head>
     <BaseHead title={title} description={description} />
   </head>
-  <body>
-    <Header class="sticky top-0 z-50" />
-    <main class="prose dark:prose-invert p-4 mx-auto flex flex-col gap-8" data-pagefind-body>
-      <article>
-        <slot />
-      </article>
-      {pubDate && <FormattedDate date={pubDate} />}
-      {
-        updatedDate && (
-          <div class="last-updated-on">
-            Last updated on <FormattedDate date={updatedDate} />
-          </div>
-        )
-      }
-      <LicenseCard
-        title={title}
-        url={Astro.url.href}
-        author={config.author.name}
-        description={`作者：${config.author.name}`}
-      />
-      <giscus-widget
-        src="https://giscus.app/client.js"
-        repo="miaobuao/miaobuao.github.io"
-        repoId="R_kgDOJONNeg"
-        categoryId="DIC_kwDOJONNes4CVJhu"
-        mapping="og:title"
-        strict="0"
-        reactionsEnabled="1"
-        emitMetadata="0"
-        inputPosition="top"
-        theme="preferred_color_scheme"
-        lang="zh-CN"
-        loading="lazy"
-      />
-    </main>
-    <Footer />
+  <body class="flex flex-col h-screen">
+    <Header />
+    <ScrollArea class="flex-1 flex w-full">
+      <section class="basis-1/5 lg:flex hidden" />
+      <ScrollArea class="flex-1">
+        <main class="prose prose-sm sm:prose-base 2xl:prose-lg dark:prose-invert p-4 mx-auto flex flex-col gap-8" data-pagefind-body>
+          <article>
+            <Content />
+          </article>
+          <LicenseCard
+            title={title}
+            url={Astro.url.href}
+            author={config.author.name}
+            description={`作者：${config.author.name}`}
+          />
+          <giscus-widget
+            repo="miaobuao/miaobuao.github.io"
+            repoId="R_kgDOJONNeg"
+            categoryId="DIC_kwDOJONNes4CVJhu"
+            mapping="og:title"
+            strict="0"
+            reactionsEnabled="1"
+            emitMetadata="0"
+            inputPosition="top"
+            theme="preferred_color_scheme"
+            lang="zh-CN"
+          />
+        </main>
+        <Footer />
+      </ScrollArea>
+      <ScrollArea class="basis-1/5 lg:flex flex-col hidden">
+        <Toc headings={headings} />
+      </ScrollArea>
+    </ScrollArea>
   </body>
 </html>
+
+
+<style>
+  article {
+    h1, h2, h3, h4, h5, h6 {
+      a {
+        @apply no-underline;
+      }
+      a:hover {
+        @apply underline relative;
+        &::before {
+          @apply absolute -left-1;
+          content: "#";
+          transform: translateX(-100%);
+        }
+      }
+    }
+  }
+</style>
