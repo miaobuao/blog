@@ -1,17 +1,17 @@
-import { defineConfig } from 'astro/config'
-import pagefind from 'astro-pagefind'
+import { rehypeHeadingIds } from '@astrojs/markdown-remark'
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
-import { rehypeHeadingIds } from '@astrojs/markdown-remark'
+import vue from '@astrojs/vue'
 import playformCompress from '@playform/compress'
 import { transformerColorizedBrackets } from '@shikijs/colorized-brackets'
-import remarkGithubAdmonitionsToDirectives from 'remark-github-admonitions-to-directives'
-import remarkDirective from 'remark-directive'
-import remarkMath from 'remark-math'
+import pagefind from 'astro-pagefind'
+import { defineConfig } from 'astro/config'
 import rehypeAutoLinkHeadings from 'rehype-autolink-headings'
 import rehypeKatex from 'rehype-katex'
 import rehypeSlug from 'rehype-slug'
-import vue from '@astrojs/vue'
+import remarkDirective from 'remark-directive'
+import remarkGithubAdmonitionsToDirectives from 'remark-github-admonitions-to-directives'
+import remarkMath from 'remark-math'
 import UnoCSS from 'unocss/astro'
 import config from './src/consts'
 
@@ -49,13 +49,17 @@ export default defineConfig({
     UnoCSS({
       injectReset: true,
     }),
+    pagefind(),
     playformCompress({
       CSS: true,
-      HTML: true,
+      HTML: {
+        'html-minifier-terser': {
+          minifyCSS: false,
+        },
+      },
       JavaScript: true,
       SVG: true,
     }),
     sitemap(),
-    pagefind(),
   ],
 })

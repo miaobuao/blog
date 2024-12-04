@@ -200,6 +200,7 @@ customElements.define('pagefind-search-results', PagefindSearchResults)
 
 <script type="module">
 if (!window.pagefind) {
+  // eslint-disable-next-line antfu/no-top-level-await
   const pagefind = await import('/pagefind/pagefind.js')
   pagefind.init()
   window.pagefind = pagefind
@@ -214,7 +215,7 @@ if (!window.pagefind) {
     <pagefind-search-results />
 </pagefind-search-input>
 
-<style scoped>
+<style>
 pagefind-search-input {
     input, button {
         @apply z-10 bg-transparent;

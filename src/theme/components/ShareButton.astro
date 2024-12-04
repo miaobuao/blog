@@ -35,7 +35,7 @@ customElements.define('share-button', ShareButton)
   data-text={text}
   data-url={url}
 >
-    <button class:list={[className]} {...btnProps}>
+    <button class:list={[className]} {...btnProps} aria-label="Share">
       <slot />
     </button>
 </share-button>
