@@ -57,17 +57,54 @@ class ArticleToc extends HTMLElement {
 
     const header = document.querySelector('header')
     const headerHeight = header?.getBoundingClientRect().height ?? 0
-    const distance = headerHeight + 20
-    const [top, ...others] = this.items
+    const distance = headerHeight + 16
+
+    const itemsWithBbox = this.items
       .map(item => ({
         bbox: item.relativeHeading?.getBoundingClientRect(),
         item,
       }))
       .filter(({ bbox }) => !!bbox)
-      .map(({ bbox, item }) => ({ distance: Math.abs(bbox!.top - distance), item }))
-      .sort((a, b) => a.distance - b.distance)
-    top.item.activate()
-    others.forEach(({ item }) => item.deactivate())
+      .map(({ bbox, item }) => ({
+        bbox: bbox!,
+        item,
+      }))
+
+    const firstPositiveIdx = itemsWithBbox.findIndex(({ bbox }) => bbox.top >= 0)
+    let target: TocItem
+    if (firstPositiveIdx === -1) {
+      target = itemsWithBbox.at(-1)!.item
+    }
+    else if (firstPositiveIdx === 0) {
+      target = itemsWithBbox[0].item
+    }
+    else {
+      const firstPositiveItem = itemsWithBbox[firstPositiveIdx]
+      const nextPositiveItem = itemsWithBbox.at(firstPositiveIdx + 1)
+      if (firstPositiveItem.bbox.bottom < headerHeight) {
+        if (nextPositiveItem && nextPositiveItem.bbox.top <= distance) {
+          target = nextPositiveItem.item
+        }
+        else {
+          target = firstPositiveItem.item
+        }
+      }
+      else if (firstPositiveItem.bbox.top <= distance) {
+        target = firstPositiveItem.item
+      }
+      else {
+        target = itemsWithBbox[firstPositiveIdx - 1].item
+      }
+    }
+
+    itemsWithBbox.forEach(({ item }) => {
+      if (item === target) {
+        item.activate()
+      }
+      else {
+        item.deactivate()
+      }
+    })
   }
 }
 
