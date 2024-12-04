@@ -1,8 +1,8 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
+import config from '@/consts'
 import AuthorAvatar from './AuthorInfo/AuthorAvatar.astro'
 import Search from './Search.astro'
-import config from '@/consts'
 
 type Props = HTMLAttributes<'header'>
 
@@ -22,5 +22,5 @@ const avatarTargetUrl = Astro.url.pathname === '/' ? '/about' : '/'
     <AuthorAvatar class="mask mask-squircle bg-neutral w-12 text-neutral-content font-semibold text-lg" />
   </a>
 
-  <Search class="m-2 md:flex-1 md:max-w-96 md:m-2 md:ml-auto md:mr-4" />
+  <Search class="m-2 md:flex-1 md:max-w-96 md:m-2 md:ml-auto md:mr-4" blur />
 </header>

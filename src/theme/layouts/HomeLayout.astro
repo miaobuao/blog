@@ -8,6 +8,7 @@ import { getSafePostsInfo } from '@/theme/lib/post'
 import { getCollection } from 'astro:content'
 import Header from '../components/Header.astro'
 import { getLanguageCode } from '../lib/utils'
+import '@/theme/styles/global.scss'
 
 const posts = await getSafePostsInfo(getCollection('blog'))
 ---

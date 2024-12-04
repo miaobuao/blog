@@ -20,6 +20,9 @@ export default defineConfig({
   site: config.site.url,
   vite: {
     assetsInclude: ['**/*.{zip,jpg,jpeg,png,gif,webp,svg,bmp}'],
+    build: {
+      cssTarget: 'chrome61',
+    },
   },
   prefetch: {
     prefetchAll: true,
@@ -52,11 +55,7 @@ export default defineConfig({
     pagefind(),
     playformCompress({
       CSS: true,
-      HTML: {
-        'html-minifier-terser': {
-          minifyCSS: false,
-        },
-      },
+      HTML: true,
       JavaScript: true,
       SVG: true,
     }),

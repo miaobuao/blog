@@ -21,7 +21,7 @@
   h4,
   h5,
   h6 {
-    a {
+    > a:nth-child(1) {
       @apply no-underline;
 
       &:hover {

@@ -1,10 +1,10 @@
 ---
+import config from '@/consts'
+import { getSafePostsInfo } from '@/theme/lib/post'
 import { type HTMLAttributes } from 'astro/types'
 import { getCollection } from 'astro:content'
 import numbro from 'numbro'
 import AuthorAvatar from './AuthorAvatar.astro'
-import config from '@/consts'
-import { getSafePostsInfo } from '@/theme/lib/post'
 
 type Props = HTMLAttributes<'div'>
 const { class: className, ...props } = Astro.props
