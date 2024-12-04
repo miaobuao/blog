@@ -16,7 +16,7 @@ class TocItem extends HTMLElement {
   }
 
   get relativeHeading() {
-    return document.querySelector(`#${this.dataset.slug}`)
+    return document.getElementById(this.dataset.slug!)
   }
 
   activate = () => {
@@ -34,7 +34,7 @@ class ArticleToc extends HTMLElement {
   }
 
   get mainScroll() {
-    return document.querySelector('#main-scroll')!
+    return document.getElementById('main-scroll')!
   }
 
   connectedCallback() {
