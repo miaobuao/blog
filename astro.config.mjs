@@ -10,6 +10,7 @@ import rehypeAutoLinkHeadings from 'rehype-autolink-headings'
 import rehypeKatex from 'rehype-katex'
 import rehypeSlug from 'rehype-slug'
 import remarkDirective from 'remark-directive'
+import remarkFootnotesExtra from 'remark-footnotes-extra'
 import remarkGithubAdmonitionsToDirectives from 'remark-github-admonitions-to-directives'
 import remarkMath from 'remark-math'
 import UnoCSS from 'unocss/astro'
@@ -35,6 +36,7 @@ export default defineConfig({
       transformers: [transformerColorizedBrackets()],
     },
     remarkPlugins: [
+      remarkFootnotesExtra,
       remarkDirective,
       remarkGithubAdmonitionsToDirectives,
       remarkMath,
