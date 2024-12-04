@@ -13,9 +13,12 @@ const { title, text, url, class: className, ...btnProps } = Astro.props
 class ShareButton extends HTMLElement {
   readonly btn = this.querySelector('button')
 
-  constructor() {
-    super()
+  connectedCallback() {
     this.btn?.addEventListener('click', this.share)
+  }
+
+  disconnectedCallback() {
+    this.btn?.removeEventListener('click', this.share)
   }
 
   share = () => {
