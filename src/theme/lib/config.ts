@@ -1,3 +1,10 @@
+import type { GiscusWidget } from 'giscus'
+
+export type GiscusConfig = Pick<
+  GiscusWidget,
+  'repo' | 'repoId' | 'category' | 'categoryId' | 'mapping' | 'term' | 'strict' | 'reactionsEnabled' | 'emitMetadata' | 'inputPosition' | 'theme' | 'lang' | 'loading'
+>
+
 export interface ThemeConfig {
   site: {
     title: string
@@ -13,6 +20,9 @@ export interface ThemeConfig {
       url: string
       alt: string
     }
+  }
+  comment?: {
+    giscus?: GiscusConfig
   }
 }
 

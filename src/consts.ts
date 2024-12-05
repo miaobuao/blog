@@ -16,6 +16,21 @@ const config = defineThemeConfig({
       alt: '秋逸',
     },
   },
+  comment: {
+    giscus: {
+      repo: 'miaobuao/miaobuao.github.io',
+      repoId: 'R_kgDOJONNeg',
+      categoryId: 'DIC_kwDOJONNes4CVJhu',
+      mapping: 'og:title',
+      strict: '0',
+      reactionsEnabled: '1',
+      emitMetadata: '0',
+      inputPosition: 'top',
+      theme: 'preferred_color_scheme',
+      lang: 'zh-CN',
+      loading: 'lazy',
+    },
+  },
 })
 
 export default config

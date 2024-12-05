@@ -5,6 +5,7 @@ import { isNil } from 'ramda'
 import ArticleToc from '../components/ArticleToc.astro'
 import BaseHead from '../components/BaseHead.astro'
 import Footer from '../components/Footer.astro'
+import Giscus from '../components/Giscus.astro'
 import Header from '../components/Header.astro'
 import LicenseCard from '../components/LicenseCard.astro'
 import ScrollArea from '../components/ScrollArea.astro'
@@ -26,10 +27,6 @@ const { Content, headings } = await product.render()
 const { data: { title, description } } = product;
 ---
 
-<script>
-  import 'giscus'
-</script>
-
 <html lang={getLanguageCode()}>
   <head>
     <BaseHead title={title} description={description} />
@@ -49,19 +46,7 @@ const { data: { title, description } } = product;
             author={config.author.name}
             description={`作者：${config.author.name}`}
           />
-          <giscus-widget
-            repo="miaobuao/miaobuao.github.io"
-            repoId="R_kgDOJONNeg"
-            categoryId="DIC_kwDOJONNes4CVJhu"
-            mapping="og:title"
-            strict="0"
-            reactionsEnabled="1"
-            emitMetadata="0"
-            inputPosition="top"
-            theme="preferred_color_scheme"
-            lang="zh-CN"
-            loading="lazy"
-          />
+          { config.comment?.giscus && <Giscus {...config.comment.giscus} /> }
         </main>
         <Footer />
       </ScrollArea>
