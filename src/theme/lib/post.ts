@@ -1,15 +1,15 @@
-import path from 'node:path'
-import type { CollectionEntry, ContentEntryMap } from 'astro:content'
-import getReadingTime from 'reading-time'
-import { toString } from 'mdast-util-to-string'
-import { fromMarkdown } from 'mdast-util-from-markdown'
-import { uniq } from 'lodash-es'
 import type { MaybePromise } from 'astro/actions/runtime/utils.js'
-import * as visit from 'unist-util-visit'
+import type { AnyEntryMap, CollectionEntry } from 'astro:content'
+import path from 'node:path'
+import { uniq } from 'lodash-es'
+import { fromMarkdown } from 'mdast-util-from-markdown'
+import { toString } from 'mdast-util-to-string'
+import getReadingTime from 'reading-time'
 import { remark } from 'remark'
+import * as visit from 'unist-util-visit'
+import { getMarkdownFilePath } from './file'
 import { getFirstCommitTime, getLastCommitTime } from './git'
 import { readMap } from './map'
-import { getMarkdownFilePath } from './file'
 
 export type ArticleTag = string | number
 
@@ -37,7 +37,7 @@ export interface IPostInfo {
 
 const infoCache = new Map<string, IPostInfo>()
 
-type Entry = MaybePromise<CollectionEntry<keyof ContentEntryMap>>
+type Entry = MaybePromise<CollectionEntry<keyof AnyEntryMap>>
 export async function getPostInfo(entry: Entry) {
   const _entry = await entry
   return readMap(infoCache, `${_entry.collection}+${_entry.slug}`, async () => {
