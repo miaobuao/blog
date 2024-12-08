@@ -6,6 +6,12 @@
 
 .prose {
   code {
+    overflow-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
+  }
+
+  .astro-code code {
     &,
     * {
       white-space: pre;
