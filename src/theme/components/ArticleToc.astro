@@ -20,11 +20,11 @@ class TocItem extends HTMLElement {
   }
 
   activate = () => {
-    this.anchor?.classList.add('active')
+    this.classList.add('active')
   }
 
   deactivate = () => {
-    this.anchor?.classList.remove('active')
+    this.classList.remove('active')
   }
 }
 
@@ -122,11 +122,10 @@ customElements.define('article-toc', ArticleToc)
 <article-toc class:list={['flex flex-col gap-2 flex-nowrap', className]} {...props}>
     {
       headings.map(({ slug, text, depth }) => (
-        <toc-item data-slug={slug}>
-          <a href={`#${slug}`}>
-            <label style={{ paddingLeft: `${(depth - 1)}rem` }}>
-                {text}
-            </label>
+        <toc-item data-slug={slug} class="flex cursor-pointer">
+          <div style={{ width: `${(depth - 1)}rem` }}></div>
+          <a href={`#${slug}`} class="flex-1">
+              {text}
           </a>
         </toc-item>
       ))
@@ -136,11 +135,11 @@ customElements.define('article-toc', ArticleToc)
 <style is:global>
 article-toc {
   toc-item {
+    &.active {
+      @apply bg-neutral text-neutral-content;
+    }
     a {
       @apply p-2 block transition-colors;
-      &.active {
-        @apply bg-neutral text-neutral-content;
-      }
     }
   }
 }
