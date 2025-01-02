@@ -22,12 +22,6 @@ jobs:
         with:
           node-version: "18.x"
 
-      - name: Cache node modules
-        uses: actions/cache@v1
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-
       - name: Install dependencies
         run: |
           npm i -g pnpm
