@@ -21,6 +21,10 @@ class TocItem extends HTMLElement {
 
   activate = () => {
     this.classList.add('active')
+    this.scrollIntoView({
+      behavior: 'smooth',
+      block: 'nearest',
+    })
   }
 
   deactivate = () => {
