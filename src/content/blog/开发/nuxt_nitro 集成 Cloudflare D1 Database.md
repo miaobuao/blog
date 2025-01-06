@@ -115,7 +115,7 @@ pages_build_output_dir="dist"
 pnpm add -D drizzle-orm drizzle-kit
 ```
 
-CLoudflare Worker 的运行时并不是是 NodeJS，而是他们自研的 [workerd](https://github.com/cloudflare/workerd)，为了兼容大部分的 NodeAPI，我们要往 `wrangler.toml` 里写入：
+CLoudflare Worker 的运行时并不是 NodeJS，而是他们自研的 [workerd](https://github.com/cloudflare/workerd)，为了兼容大部分的 NodeAPI，我们要往 `wrangler.toml` 里写入：
 
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
