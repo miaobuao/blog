@@ -51,17 +51,17 @@ docker run -d \
 
 ## 使用 Cloudflare Tunnel 转发
 
-![alt text](image.png)
+![alt text](./assets/image.png)
 
-![alt text](image-1.png)
+![alt text](./assets/image-1.png)
 
 点击创建 Tunnel
 
-![alt text](image-2.png)
+![alt text](./assets/image-2.png)
 
 点击`Docker`，然后复制下面的指令
 
-![alt text](image-3.png)
+![alt text](./assets/image-3.png)
 
 添加`--net`和`--name`参数，然后粘贴到主机的终端里执行：
 
@@ -72,17 +72,17 @@ docker run \
     cloudflare/cloudflared:latest tunnel --no-autoupdate run --token <YOUR TOKEN>
 ```
 
-![alt text](image-4.png)
+![alt text](./assets/image-4.png)
 
 执行成功后，返回 cloudflare 的网页，可以看到 connectors 里面多出来了一个连接
 
 **tips: 该指令建议在 tmux 中执行**
 
-![alt text](image-5.png)
+![alt text](./assets/image-5.png)
 
 点击下一步，输入 subdomain，选择 domain，path 空着即可，协议选择 http,由于 webui 默认开在 3000 端口，所以 URL 处输入 `localhost:3000`
 
-![alt text](image-6.png)
+![alt text](./assets/image-6.png)
 
 保存之后，就可以在外网访问了！
 
