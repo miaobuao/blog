@@ -9,7 +9,6 @@
 		"build": "astro build && pagefind --site dist",
 		"preview": "astro preview",
 		"astro": "astro",
-		"prepare": "husky",
 		"lint-staged": "lint-staged"
 	},
 	"lint-staged": {
@@ -45,7 +44,6 @@
 		"dayjs": "^1.11.13",
 		"fs-extra": "^11.2.0",
 		"giscus": "^1.5.0",
-		"husky": "^9.1.7",
 		"jsdom": "^25.0.1",
 		"lcid": "^5.0.0",
 		"lint-staged": "^15.2.10",
