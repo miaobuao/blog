@@ -30,13 +30,16 @@ const { class: className, blur, ...props } = Astro.props
 	]}
 	{...props}
 >
-	<pagefind-mask class="hidden" data-blur={blur ? 'true' : 'false'}
-	></pagefind-mask>
+	<pagefind-mask
+		class="hidden fixed inset-0 bg-black/50 z-10 transition-all"
+		data-blur={blur ? 'true' : 'false'}></pagefind-mask>
 	<input type="text" class="grow" placeholder="🔍 搜索文章" />
 	<button class="btn btn-circle btn-ghost btn-sm p-0 hidden" name="clear">
 		<ClearIcon />
 	</button>
-	<pagefind-search-results></pagefind-search-results>
+	<pagefind-search-results
+		class="absolute w-full top-full left-0 overflow-y-auto z-10 flex flex-col gap-2 mt-2"
+	></pagefind-search-results>
 </pagefind-search-input>
 
 <style is:global>
@@ -44,14 +47,6 @@ const { class: className, blur, ...props } = Astro.props
 		input,
 		button {
 			@apply z-10 bg-transparent;
-		}
-
-		pagefind-mask {
-			@apply fixed inset-0 bg-black/50 z-10 transition-all;
-		}
-
-		pagefind-search-results {
-			@apply absolute w-full top-full left-0 overflow-y-auto z-10 flex flex-col gap-2 mt-2;
 		}
 
 		pagefind-search-result-item {
