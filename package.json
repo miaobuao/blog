@@ -9,6 +9,7 @@
 		"build": "astro build && pagefind --site dist",
 		"preview": "astro preview",
 		"astro": "astro",
+		"lint": "prettier '**/*.{astro,js,jsx,svelte,ts,tsx,vue,json,css,scss}' --write",
 		"lint-staged": "lint-staged"
 	},
 	"lint-staged": {
