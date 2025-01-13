@@ -18,49 +18,50 @@ import config from './src/consts'
 
 // https://astro.build/config
 export default defineConfig({
-  site: config.site.url,
-  vite: {
-    assetsInclude: ['**/*.{zip,jpg,jpeg,png,gif,webp,svg,bmp}'],
-    build: {
-      cssTarget: 'chrome61',
-    },
-  },
-  prefetch: {
-    prefetchAll: true,
-    defaultStrategy: 'viewport',
-  },
-  markdown: {
-    syntaxHighlight: 'shiki',
-    shikiConfig: {
-      wrap: true,
-      transformers: [transformerColorizedBrackets()],
-    },
-    remarkPlugins: [
-      remarkFootnotesExtra,
-      remarkDirective,
-      remarkGithubAdmonitionsToDirectives,
-      remarkMath,
-    ],
-    rehypePlugins: [
-      rehypeHeadingIds,
-      [rehypeAutoLinkHeadings, { behavior: 'wrap' }],
-      rehypeSlug,
-      [rehypeKatex, { output: 'mathml' }],
-    ],
-  },
-  integrations: [
-    mdx(),
-    vue(),
-    UnoCSS({
-      injectReset: true,
-    }),
-    pagefind(),
-    playformCompress({
-      CSS: true,
-      HTML: true,
-      JavaScript: true,
-      SVG: true,
-    }),
-    sitemap(),
-  ],
+	site: config.site.url,
+	vite: {
+		assetsInclude: ['**/*.{zip,jpg,jpeg,png,gif,webp,svg,bmp}'],
+		build: {
+			cssTarget: 'chrome61',
+		},
+	},
+	prefetch: {
+		prefetchAll: true,
+		defaultStrategy: 'viewport',
+	},
+	markdown: {
+		syntaxHighlight: 'shiki',
+		shikiConfig: {
+			wrap: true,
+			transformers: [transformerColorizedBrackets()],
+		},
+		gfm: false,
+		remarkPlugins: [
+			remarkFootnotesExtra,
+			remarkDirective,
+			remarkGithubAdmonitionsToDirectives,
+			remarkMath,
+		],
+		rehypePlugins: [
+			rehypeHeadingIds,
+			[rehypeAutoLinkHeadings, { behavior: 'wrap' }],
+			rehypeSlug,
+			[rehypeKatex, { output: 'mathml' }],
+		],
+	},
+	integrations: [
+		mdx(),
+		vue(),
+		UnoCSS({
+			injectReset: true,
+		}),
+		pagefind(),
+		playformCompress({
+			CSS: true,
+			HTML: true,
+			JavaScript: true,
+			SVG: true,
+		}),
+		sitemap(),
+	],
 })
