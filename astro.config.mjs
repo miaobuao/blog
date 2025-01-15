@@ -1,67 +1,43 @@
-import { rehypeHeadingIds } from '@astrojs/markdown-remark'
-import mdx from '@astrojs/mdx'
-import sitemap from '@astrojs/sitemap'
-import vue from '@astrojs/vue'
-import playformCompress from '@playform/compress'
-import { transformerColorizedBrackets } from '@shikijs/colorized-brackets'
-import pagefind from 'astro-pagefind'
+import theme from '@meo/astro-blog-theme'
 import { defineConfig } from 'astro/config'
-import rehypeAutoLinkHeadings from 'rehype-autolink-headings'
-import rehypeKatex from 'rehype-katex'
-import rehypeSlug from 'rehype-slug'
-import remarkDirective from 'remark-directive'
-import remarkFootnotesExtra from 'remark-footnotes-extra'
-import remarkGithubAdmonitionsToDirectives from 'remark-github-admonitions-to-directives'
-import remarkMath from 'remark-math'
-import UnoCSS from 'unocss/astro'
-import config from './src/consts'
 
-// https://astro.build/config
 export default defineConfig({
-	site: config.site.url,
-	vite: {
-		assetsInclude: ['**/*.{zip,jpg,jpeg,png,gif,webp,svg,bmp}'],
-		build: {
-			cssTarget: 'chrome61',
-		},
-	},
-	prefetch: {
-		prefetchAll: true,
-		defaultStrategy: 'viewport',
-	},
-	markdown: {
-		syntaxHighlight: 'shiki',
-		shikiConfig: {
-			wrap: true,
-			transformers: [transformerColorizedBrackets()],
-		},
-		gfm: false,
-		remarkPlugins: [
-			remarkFootnotesExtra,
-			remarkDirective,
-			remarkGithubAdmonitionsToDirectives,
-			remarkMath,
-		],
-		rehypePlugins: [
-			rehypeHeadingIds,
-			[rehypeAutoLinkHeadings, { behavior: 'wrap' }],
-			rehypeSlug,
-			[rehypeKatex, { output: 'mathml' }],
-		],
-	},
+	site: 'https://yangqiuyi.com',
 	integrations: [
-		mdx(),
-		vue(),
-		UnoCSS({
-			injectReset: true,
+		theme({
+			site: {
+				title: `杨秋逸的博客`,
+				description: '这是杨秋逸的博客!',
+				locale: 'zh-CN',
+				url: 'https://yangqiuyi.com',
+			},
+			author: {
+				name: '杨秋逸',
+				email: 'miaobuao@outlook.com',
+				signature: 'To Be A Geek :)',
+				avatar: {
+					url: 'https://avatars.githubusercontent.com/u/62047803?v=4',
+					alt: '秋逸',
+				},
+			},
+			comment: {
+				giscus: {
+					repo: 'miaobuao/miaobuao.github.io',
+					repoId: 'R_kgDOJONNeg',
+					categoryId: 'DIC_kwDOJONNes4CVJhu',
+					mapping: 'og:title',
+					strict: '0',
+					reactionsEnabled: '1',
+					emitMetadata: '0',
+					inputPosition: 'top',
+					theme: 'preferred_color_scheme',
+					lang: 'zh-CN',
+					loading: 'lazy',
+				},
+			},
+			pages: {
+				aboutMe: '/about',
+			},
 		}),
-		pagefind(),
-		playformCompress({
-			CSS: true,
-			HTML: true,
-			JavaScript: true,
-			SVG: true,
-		}),
-		sitemap(),
 	],
 })

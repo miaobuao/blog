@@ -5,9 +5,12 @@
 	// Auto fix
 	"editor.codeActionsOnSave": {
 		"source.fixAll.eslint": "never",
-		"source.organizeImports": "explicit",
-		"source.addMissingImports.ts": "always",
 		"source.sortImports": "explicit"
+	},
+	"[mdx]": {
+		"editor.codeActionsOnSave": {
+			"source.sortImports": "never"
+		}
 	},
 	"[markdown]": {
 		"editor.codeActionsOnSave": {

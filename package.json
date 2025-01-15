@@ -33,9 +33,9 @@
 		"@types/ramda": "^0.30.2",
 		"@unocss/reset": "^0.65.1",
 		"@vercel/speed-insights": "^1.1.0",
-		"astro": "^5.0.2",
-		"astro-icon": "^1.1.4",
-		"astro-pagefind": "^1.6.0",
+		"astro": "^5.1.6",
+		"astro-icon": "^1.1.5",
+		"astro-pagefind": "^1.7.0",
 		"autoprefixer": "^10.4.20",
 		"class-variance-authority": "^0.7.1",
 		"clsx": "^2.1.1",
@@ -53,6 +53,7 @@
 		"marked": "^15.0.3",
 		"mdast-util-from-markdown": "^2.0.2",
 		"mdast-util-to-string": "^4.0.0",
+		"medium-zoom": "^1.1.0",
 		"numbro": "^2.5.0",
 		"pagefind": "^1.2.0",
 		"preact": "^10.25.1",
@@ -78,7 +79,9 @@
 		"unocss": "^0.65.1",
 		"unocss-preset-daisy": "^7.0.0",
 		"unocss-preset-scrollbar-hide": "^1.0.1",
-		"vue": "^3.5.13",
-		"medium-zoom": "^1.1.0"
+		"vue": "^3.5.13"
+	},
+	"devDependencies": {
+		"@meo/astro-blog-theme": "github:miaobuao/astro-theme"
 	}
 }
