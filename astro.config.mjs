@@ -1,4 +1,4 @@
-import theme from '@meo/astro-blog-theme'
+import theme from 'astro-theme-meo'
 import { defineConfig } from 'astro/config'
 
 export default defineConfig({

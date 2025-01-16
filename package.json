@@ -19,6 +19,6 @@
 		"astro": "^5.1.6",
 		"prettier": "^3.4.2",
 		"prettier-plugin-astro": "^0.14.1",
-		"@meo/astro-blog-theme": "github:miaobuao/astro-theme"
+		"astro-theme-meo": "github:miaobuao/astro-theme-meo"
 	}
 }
