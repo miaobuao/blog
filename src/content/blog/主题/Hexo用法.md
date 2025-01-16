@@ -1,7 +1,7 @@
 ---
 title: 'Hexo用法'
 date: 2021-02-25 00:59:36
-tags: [记录问题]
+tags: [主题]
 published: true
 hideInList: false
 feature: 

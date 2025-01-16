@@ -1,7 +1,7 @@
 ---
 title: '修复/重装MS Store'
 date: 2022-05-17 11:34:38
-tags: [记录问题]
+tags: [开发]
 published: true
 hideInList: false
 feature: 
