@@ -1,7 +1,7 @@
 ---
 title: 'Spring_Festival与《HI，Mum!》的相关词汇'
 date: 2021-03-08 10:39:20
-tags: [笔记,大学,英语]
+tags: [大学,英语]
 published: true
 hideInList: false
 feature: 
