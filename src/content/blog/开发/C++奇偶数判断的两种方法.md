@@ -1,7 +1,7 @@
 ---
 title: 'C++奇偶数判断的两种方法'
 date: 2021-02-25 21:01:22
-tags: [C++]
+tags: [开发]
 published: true
 hideInList: false
 feature: 

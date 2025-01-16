@@ -1,7 +1,7 @@
 ---
 title: '棋盘挑战_N皇后问题'
 date: 2021-03-08 12:30:35
-tags: [算法,C++]
+tags: [算法]
 published: true
 hideInList: false
 feature: 

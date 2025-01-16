@@ -1,7 +1,7 @@
 ---
 title: 'And Then There Were K - CodeForces'
 date: 2021-05-21 00:12:48
-tags: [算法,C++]
+tags: [算法]
 published: true
 hideInList: false
 feature: 

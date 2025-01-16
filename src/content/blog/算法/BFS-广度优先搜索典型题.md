@@ -1,7 +1,7 @@
 ---
 title: 'BFS-广度优先搜索典型题'
 date: 2021-03-06 22:11:54
-tags: [算法,C++]
+tags: [算法]
 published: true
 hideInList: false
 feature: 

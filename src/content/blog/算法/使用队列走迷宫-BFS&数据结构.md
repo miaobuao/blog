@@ -1,7 +1,7 @@
 ---
 title: '使用队列走迷宫-BFS&数据结构'
 date: 2021-04-25 16:58:27
-tags: [数据结构,C++]
+tags: [数据结构]
 published: true
 hideInList: false
 feature: 

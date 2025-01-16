@@ -1,7 +1,7 @@
 ---
 title: '股票买卖II-动态规划'
 date: 2021-04-15 08:55:33
-tags: [算法,C++]
+tags: [算法]
 published: true
 hideInList: false
 feature: 
