@@ -14,7 +14,7 @@ fisher install jorgebucaran/fisher
 
 出现问题：`Invalid plugin name or host unavailable: xxx`
 说明cURL有问题^[https://github.com/jorgebucaran/fisher/issues/634]
-参考[这篇博客](../../curl%3A_error_setting_certificate_verify_locations.md)
+参考[这篇博客](../curl_error_setting_certificate_verify_locations.md)
 
 ## 安装nvm.fish
 
