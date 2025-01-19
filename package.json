@@ -16,9 +16,11 @@
 		"*.{astro,js,jsx,svelte,ts,tsx,vue,json,css,scss}": "prettier --write"
 	},
 	"dependencies": {
-		"astro": "^5.1.6",
-		"prettier": "^3.4.2",
-		"prettier-plugin-astro": "^0.14.1",
+		"astro": "^5.1.7",
 		"astro-theme-meo": "github:miaobuao/astro-theme-meo"
+	},
+	"devDependencies": {
+		"prettier": "^3.4.2",
+		"prettier-plugin-astro": "^0.14.1"
 	}
 }
