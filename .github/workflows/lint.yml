@@ -24,12 +24,15 @@ jobs:
           lfs: true
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v1
         with:
-          node-version: 20
+          node-version: '18.x'
 
       - name: Install dependencies
-        run: npm install -g pnpm && pnpm i
+        run: |
+          rm pnpm-lock.yaml
+          npm i -g pnpm
+          pnpm i
 
       - name: Run Prettier and Check Changes
         id: prettier
