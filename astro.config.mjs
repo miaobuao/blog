@@ -20,6 +20,10 @@ export default defineConfig({
 					alt: '秋逸',
 				},
 			},
+			links: {
+				github: 'https://github.com/miaobuao',
+				bilibili: 'https://space.bilibili.com/28587690',
+			},
 			comment: {
 				giscus: {
 					repo: 'miaobuao/miaobuao.github.io',
