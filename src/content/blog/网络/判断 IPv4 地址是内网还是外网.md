@@ -18,21 +18,34 @@ tags: [网络]
 
 ```ts
 export function isIntranetIPv4Address(addr: string) {
-  const reg = /(::ffff:)?(\d+)\.(\d+)\.(\d+)\.(\d+)$/g;
-  const segments = Array.from(addr.matchAll(reg))[0].slice(2).map(Number);
-  switch (segments[0]) {
-    case 10:
-      // 10.0.0.0 ~ 10.255.255.255
-      return true;
-    case 172:
-      // 172.16.0.0 ~ 172.31.255.255
-      if (segments[1] >= 16 && segments[1] <= 31) return true;
-      break;
-    case 192:
-      // 192.168.0.0 ~ 192.168.255.255
-      if (segments[1] === 168) return true;
-      break;
-  }
-  return false;
+	const reg = /(::ffff:)?(\d+)\.(\d+)\.(\d+)\.(\d+)$/g
+	const match = addr.matchAll(reg)
+	const segments = Array.from(match).at(0)?.slice(2).map(Number)
+	if (!segments) {
+		return false
+	}
+	switch (segments[0]) {
+		case 10:
+			// 10.0.0.0 ~ 10.255.255.255
+			return true
+		case 172:
+			// 172.16.0.0 ~ 172.31.255.255
+			if (segments[1] >= 16 && segments[1] <= 31) return true
+			break
+		case 192:
+			// 192.168.0.0 ~ 192.168.255.255
+			if (segments[1] === 168) return true
+			break
+	}
+	return false
 }
+
+console.log(isIntranetIPv4Address('10.100.200.255'))     // true
+console.log(isIntranetIPv4Address('172.16.0.1'))         // true
+console.log(isIntranetIPv4Address('172.31.255.255'))     // true
+console.log(isIntranetIPv4Address('192.168.0.1'))        // true
+console.log(isIntranetIPv4Address('::ffff:192.168.0.1')) // true
+console.log(isIntranetIPv4Address('12.34.56.78'))        // false
+console.log(isIntranetIPv4Address('invalid.ip'))         // false
+console.log(isIntranetIPv4Address('256.0.0.1'))          // false
 ```
